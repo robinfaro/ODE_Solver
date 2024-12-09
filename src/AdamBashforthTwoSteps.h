@@ -20,7 +20,7 @@
  * y_{n+1} = y_n + h \left( \frac{3}{2} f(t_n, y_n) - \frac{1}{2} f(t_{n-1}, y_{n-1}) \right),
  * \f]
  * 
- * where \f[ \beta_0 = \frac{3}{2} \f] and \f[ \beta_1 = -\frac{1}{2} \f] are the non-zero coefficients of the method.
+ * where \f$ \beta_0 = \frac{3}{2} \f$ and \f$ \beta_1 = -\frac{1}{2} \f$ are the non-zero coefficients of the method.
  */
 class AdamBashforthTwoSteps : public AdamBashforth
 {

@@ -16,13 +16,13 @@
  * It extends the MultiStep class implementing an explicit multi-step method with fixed alpha vector. 
  * 
  *  
- * The general \f[ k \f]-step Adams-Bashforth method is given by:
+ * The general \f$ k \f$-step Adams-Bashforth method is given by:
  * 
  * \f[
  * y_{n+1} = \alpha_0 y_n + h \sum_{i=0}^{k-1} \beta_i f(t_{n-i}, y_{n-i}),
  * \f]
  * 
- * where \f[ \alpha_0 = 1 \f] and the others \f[ \alpha_i = 0 \f].
+ * where \f$ \alpha_0 = 1 \f$ and the others \f$ \alpha_i = 0 \f$.
  */
 class AdamBashforth : public MultiStep
 {

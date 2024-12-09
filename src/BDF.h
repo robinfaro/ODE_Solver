@@ -15,13 +15,13 @@
  * 
  * It extends the MultiStep class implementing an implict multi-step method with fixed beta vector.
 * 
- * The \f[ k \f]-step BDF method is given by:
+ * The \f$ k \f$-step BDF method is given by:
  * 
  * \f[
  * \sum_{i=0}^{k} \alpha_i y_{n-i} = h f(t_{n}, y_{n}),
  * \f]
  * 
- * where \f[ \beta_0 = 1 \f] and the others \f[ \beta_i = 0 \f].
+ * where \f$ \beta_0 = 1 \f$ and the others \f$ \beta_i = 0 \f$.
  */
 
 class BDF : public MultiStep

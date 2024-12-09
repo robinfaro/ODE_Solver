@@ -21,7 +21,7 @@
  * y_{n+1} = y_n + h f\left(t_n , y_n \right)
  * \f]
  * 
- * In this setting, the coefficients \f[ a_{ij} \f], \f[ b_i \f], and \f[ c_i \f]  are:
+ * In this setting, the coefficients \f$ a_{ij} \f$, \f$ b_i \f$, and \f$ c_i \f$  are:
  * 
  * \f[
  * \begin{array}{c|c}

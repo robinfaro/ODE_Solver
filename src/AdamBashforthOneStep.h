@@ -21,7 +21,7 @@
  * y_{n+1} = y_n + h f(t_n, y_n),
  * \f]
  * 
- * where \f[ \beta_0 = 1 \f] is the only non-zero coefficient in this one-step method.
+ * where \f$ \beta_0 = 1 \f$ is the only non-zero coefficient in this one-step method.
  */
 class AdamBashforthOneStep : public AdamBashforth
 {

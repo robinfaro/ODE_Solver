@@ -14,19 +14,19 @@
  * 
  * The Runge-Kutta methods are numerical solver of ordinary 
  * differential equations (ODEs). The generic formulation of an explicit 
- * Runge-Kutta method of order \f[ s \f] is given by:
+ * Runge-Kutta method of order \f$ s \f$ is given by:
  * 
  * \f[
  * y_{n+1} = y_n + h \sum_{i=1}^{s} b_i k_i
  * \f]
  * 
- * where the stages \f[ k_i \f] are defined as:
+ * where the stages \f$ k_i \f$ are defined as:
  * 
  * \f[
  * k_i = f\left(t_n + c_i h, y_n + h \sum_{j=1}^{i-1} a_{ij} k_j\right), \quad i = 1, \dots, s
  * \f]
  * 
- * The coefficients \f[ a_{ij} \f], \f[ b_i \f], and \f[ c_i \f] are represented by:
+ * The coefficients \f$ a_{ij} \f$, \f$ b_i \f$, and \f$ c_i \f$ are represented by:
  * 
  * \f[
  * \begin{array}{c|cccc}

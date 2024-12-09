@@ -20,7 +20,7 @@
  * y_{n+1} = y_n + h \left( \frac{23}{12} f(t_n, y_n) - \frac{16}{12} f(t_{n-1}, y_{n-1}) + \frac{5}{12} f(t_{n-2}, y_{n-2}) \right),
  * \f]
  * 
- * where \f[ \beta_0 = \frac{23}{12} \f], \f[ \beta_1 = -\frac{16}{12} \f], and \f[ \beta_2 = \frac{5}{12} \f] are the non-zero coefficients of the method.
+ * where \f$ \beta_0 = \frac{23}{12} \f$, \f$ \beta_1 = -\frac{16}{12} \f$, and \f$ \beta_2 = \frac{5}{12} \f$ are the non-zero coefficients of the method.
  * 
  */
 class AdamBashforthThreeSteps : public AdamBashforth

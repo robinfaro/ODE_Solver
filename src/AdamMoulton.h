@@ -17,13 +17,13 @@
  * 
  * It extends the MultiStep class and implementing an implicit solver with fixed alpha.
  * 
- * The general \f[ k \f]-step Adams-Moulton method is given by:
+ * The general \f$ k \f$-step Adams-Moulton method is given by:
  * 
  * \f[
  * y_{n+1} = \alpha_0 y_n + h \left( \beta_0 f(t_{n+1}, y_{n+1}) + \sum_{i=1}^{k} \beta_i f(t_{n+1-i}, y_{n+1-i}) \right),
  * \f]
  * 
- * where \f[ \alpha_0 = 1 \f] the others \f[ \alpha_i = 0 \f].
+ * where \f$ \alpha_0 = 1 \f$ the others \f$ \alpha_i = 0 \f$.
  */
 class AdamMoulton : public MultiStep
 {

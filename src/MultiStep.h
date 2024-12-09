@@ -17,7 +17,7 @@
 enum CoeffType { ALPHA, BETA };
 
 /**
- * @brief The MultiStep class for solving ordinary differential equations (ODEs) using multi-step methods.
+ * @brief A class for solving ordinary differential equations (ODEs) using multi-step methods.
  * 
  * Multi-step methods are solvers of ordinary differential equations (ODEs) which utilize
  * information from multiple previous steps to compute the next solution point. 
@@ -28,12 +28,12 @@ enum CoeffType { ALPHA, BETA };
  * \f]
  * 
  * where:
- * - \f[ y_{n+1} \f]: the solution at the next time step.
- * - \f[ y_{n-i} \f]: the solutions at previous time steps.
- * - \f[ f(t, y) \f]: the derivative of the function \f[ \frac{dy}{dt} \f].
- * - \f[ \alpha_i, \beta_i \f]: coefficients that change according to the multi-step method employed.
- * - \f[ h \f]: the time step size.
- * - \f[ k \f]: the number of previous steps used in the method.
+ * - \f$ y_{n+1} \f$: the solution at the next time step.
+ * - \f$ y_{n-i} \f$: the solutions at previous time steps.
+ * - \f$ f(t, y) \f$: the derivative of the function \f$ \frac{dy}{dt} \f$.
+ * - \f$ \alpha_i, \beta_i \f&: coefficients that change according to the multi-step method employed.
+ * - \f$ h \f$: the time step size.
+ * - \f$ k \f$: the number of previous steps used in the method.
  * 
  */
 class MultiStep : public OdeSolver

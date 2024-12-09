@@ -23,7 +23,7 @@
  * y_{n+1} = y_n + h f(t_{n+1}, y_{n+1}),
  * \f]
  * 
- * where \f[ \beta_0 = 1 \f] is the single non-zero coefficient of this method.
+ * where \f$ \beta_0 = 1 \f$ is the single non-zero coefficient of this method.
  * 
  */
 class BackwardEuler : public AdamMoulton

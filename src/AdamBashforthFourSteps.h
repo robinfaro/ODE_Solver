@@ -21,7 +21,7 @@
  * \f]
  * 
  * where:
- * - \f[ \beta_0 = \frac{55}{24} \f], \f[ \beta_1 = -\frac{59}{24} \f], \f[ \beta_2 = \frac{37}{24} \f], and \f[ \beta_3 = -\frac{9}{24} \f] are the non-zero coefficients of the method.
+ * - \f$ \beta_0 = \frac{55}{24} \f$, \f$ \beta_1 = -\frac{59}{24} \f$, \f$ \beta_2 = \frac{37}{24} \f$, and \f$ \beta_3 = -\frac{9}{24} \f$ are the non-zero coefficients of the method.
  */
 class AdamBashforthFourSteps : public AdamBashforth
 {
