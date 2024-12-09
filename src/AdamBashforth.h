@@ -15,15 +15,14 @@
  * 
  * It extends the MultiStep class implementing an explicit multi-step method with fixed alpha vector. 
  * 
- * The Adams-Bashforth method is an explicit multi-step method for solving ordinary differential equations (ODEs).
- * 
- * The general \( k \)-step Adams-Bashforth method is given by:
+ *  
+ * The general \f[ k \f]-step Adams-Bashforth method is given by:
  * 
  * \f[
- * y_{n+1} = \alpha_1 y_n + h \sum_{i=0}^{k-1} \beta_i f(t_{n-i}, y_{n-i}),
+ * y_{n+1} = \alpha_0 y_n + h \sum_{i=0}^{k-1} \beta_i f(t_{n-i}, y_{n-i}),
  * \f]
  * 
- * where \( \alpha_0 = 1 \) and the others \( \alpha_i = 0 \).
+ * where \f[ \alpha_0 = 1 \f] and the others \f[ \alpha_i = 0 \f].
  */
 class AdamBashforth : public MultiStep
 {
@@ -46,7 +45,7 @@ public:
      * @param final_time The final time of the problem.
      * @param initial_condition The initial condition of the problem.
      * @param function A Function object that includes the actual function of the problem.
-     * @param beta The vector of coefficients for the Adam-Bashforth method (used for function terms).
+     * @param beta The vector of coefficients for the Adam-Bashforth method.
      */
     AdamBashforth(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::VectorXd beta);
 

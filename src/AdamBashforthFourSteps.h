@@ -1,8 +1,17 @@
 /**
- * @file AdamBashforthFourStep.h
+ * @file AdamBashforthFourSteps.h
  * @brief Defines the AdamBashforthFourStep class for solving ordinary differential equations (ODEs) using the Adams-Bashforth four-step method.
- * 
- * The Adams-Bashforth four-step method is a fourth-order explicit method for solving ordinary differential equations (ODEs). 
+*/
+#ifndef ADAMBASHFORTHFOURSTEPS_H
+#define ADAMBASHFORTHFOURSTEPS_H
+
+#pragma once
+
+#include <Eigen/Dense>
+#include "AdamBashforth.h"
+
+/**
+ * @brief A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth four-step method.
  * 
  * The method is given by:
  * 
@@ -12,16 +21,8 @@
  * \f]
  * 
  * where:
- * - \( \beta_0 = \frac{55}{24} \), \( \beta_1 = -\frac{59}{24} \), \( \beta_2 = \frac{37}{24} \), and \( \beta_3 = -\frac{9}{24} \) are the non-zero coefficients of the method.
+ * - \f[ \beta_0 = \frac{55}{24} \f], \f[ \beta_1 = -\frac{59}{24} \f], \f[ \beta_2 = \frac{37}{24} \f], and \f[ \beta_3 = -\frac{9}{24} \f] are the non-zero coefficients of the method.
  */
-#ifndef ADAMBASHFORTHFOURSTEPS_H
-#define ADAMBASHFORTHFOURSTEPS_H
-
-#pragma once
-
-#include <Eigen/Dense>
-#include "AdamBashforth.h"
-
 class AdamBashforthFourSteps : public AdamBashforth
 {
 public:

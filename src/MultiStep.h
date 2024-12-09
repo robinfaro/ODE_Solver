@@ -28,12 +28,12 @@ enum CoeffType { ALPHA, BETA };
  * \f]
  * 
  * where:
- * - \( y_{n+1} \): the solution at the next time step.
- * - \( y_{n-i} \): the solutions at previous time steps.
- * - \( f(t, y) \): the derivative of the function \( \frac{dy}{dt} \).
- * - \( \alpha_i, \beta_i \): coefficients that change according to the multi-step method employed.
- * - \( h \): the time step size.
- * - \( k \): the number of previous steps used in the method.
+ * - \f[ y_{n+1} \f]: the solution at the next time step.
+ * - \f[ y_{n-i} \f]: the solutions at previous time steps.
+ * - \f[ f(t, y) \f]: the derivative of the function \f[ \frac{dy}{dt} \f].
+ * - \f[ \alpha_i, \beta_i \f]: coefficients that change according to the multi-step method employed.
+ * - \f[ h \f]: the time step size.
+ * - \f[ k \f]: the number of previous steps used in the method.
  * 
  */
 class MultiStep : public OdeSolver

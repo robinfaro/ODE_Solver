@@ -12,7 +12,7 @@
 #include "AdamMoulton.h"
 
 /**
- * @brief The BackwardEuler class for solving ordinary differential equations (ODEs) using the Backward Euler method.
+ * @brief A class for solving ordinary differential equations (ODEs) using the Backward Euler method.
  * 
  * The Backward Euler method is a first-order implicit method and can be considered the simplest form of the Adams-Moulton family. 
  * It uses the derivative information at the next time step to compute the solution, requiring the solution of an implicit equation at each step.
@@ -23,7 +23,7 @@
  * y_{n+1} = y_n + h f(t_{n+1}, y_{n+1}),
  * \f]
  * 
- * where \( \beta_0 = 1 \) is the single non-zero coefficient of this method.
+ * where \f[ \beta_0 = 1 \f] is the single non-zero coefficient of this method.
  * 
  */
 class BackwardEuler : public AdamMoulton

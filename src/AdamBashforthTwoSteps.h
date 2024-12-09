@@ -1,5 +1,5 @@
 /**
- * @file AdamBashforthTwoStep.h
+ * @file AdamBashforthTwoSteps.h
  * @brief Defines the AdamBashforthTwoStep class for solving ordinary differential equations (ODEs) using the Adams-Bashforth two-step method.
 */
 
@@ -14,15 +14,13 @@
 /**
  * @brief A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth two-step method.
  * 
- * The Adams-Bashforth two-step method is a second-order explicit method for solving ordinary differential equations (ODEs). 
- * 
  * The method is given by:
  * 
  * \f[
  * y_{n+1} = y_n + h \left( \frac{3}{2} f(t_n, y_n) - \frac{1}{2} f(t_{n-1}, y_{n-1}) \right),
  * \f]
  * 
- * where \( \beta_0 = \frac{3}{2} \) and \( \beta_1 = -\frac{1}{2} \) are the non-zero coefficients of the method.
+ * where \f[ \beta_0 = \frac{3}{2} \f] and \f[ \beta_1 = -\frac{1}{2} \f] are the non-zero coefficients of the method.
  */
 class AdamBashforthTwoSteps : public AdamBashforth
 {

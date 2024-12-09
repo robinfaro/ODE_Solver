@@ -11,19 +11,17 @@
 #include "MultiStep.h"
 
 /**
- * @brief A class for solving ordinary differential equations (ODEs) using the BDF method.
+ * @brief A class for solving ordinary differential equations (ODEs) using the Backward Differentiation Formula method.
  * 
  * It extends the MultiStep class implementing an implict multi-step method with fixed beta vector.
- * 
- * The Backward Differentiation Formula (BDF) method is an implicit multi-step method for solving ordinary differential equations (ODEs).
- * 
- * The \( k \)-step BDF method is given by:
+* 
+ * The \f[ k \f]-step BDF method is given by:
  * 
  * \f[
  * \sum_{i=0}^{k} \alpha_i y_{n-i} = h f(t_{n}, y_{n}),
  * \f]
  * 
- * where \( \beta_0 = 1 \) and the others \( \beta_i = 0 \).
+ * where \f[ \beta_0 = 1 \f] and the others \f[ \beta_i = 0 \f].
  */
 
 class BDF : public MultiStep
@@ -42,7 +40,7 @@ public:
      * @param final_time The final time of the problem.
      * @param initial_condition The initial condition of the problem.
      * @param function A Function object that includes the actual function of the problem and its Jacobian.
-     * @param alpha The vector of coefficients for the BDF method (used for previous solution terms).
+     * @param alpha The vector of coefficients for the BDF method.
      */
     BDF(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::VectorXd alpha);
 

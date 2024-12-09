@@ -11,11 +11,10 @@
 #include "Function.h"
 
 /**
- * @brief A class for solving nonlinear equations using Newton's method.
+ * @brief A class for solving nonlinear equations using Newton's method.R
  * 
  * This class implements a Newton solver, particularly for use in implicit
- * ODE solvers. It supports customization through parameters like tolerance, step size, 
- * and coefficients.
+ * ODE solvers.
  */
 class NewtonMethod
 {

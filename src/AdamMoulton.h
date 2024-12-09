@@ -13,19 +13,17 @@
 #include "MultiStep.h"
 
 /**
- * @brief The AdamMoulton class for solving ordinary differential equations (ODEs) using the Adams-Moulton method.
+ * @brief A class for solving ordinary differential equations (ODEs) using the Adams-Moulton method.
  * 
  * It extends the MultiStep class and implementing an implicit solver with fixed alpha.
  * 
- * The Adams-Moulton method is an implicit multi-step method for solving ordinary differential equations (ODEs). 
- * 
- * The general \( k \)-step Adams-Moulton method is given by:
+ * The general \f[ k \f]-step Adams-Moulton method is given by:
  * 
  * \f[
  * y_{n+1} = \alpha_0 y_n + h \left( \beta_0 f(t_{n+1}, y_{n+1}) + \sum_{i=1}^{k} \beta_i f(t_{n+1-i}, y_{n+1-i}) \right),
  * \f]
  * 
- * where \( \alpha_0 = 1 \) the others \( \alpha_i = 0 \).
+ * where \f[ \alpha_0 = 1 \f] the others \f[ \alpha_i = 0 \f].
  */
 class AdamMoulton : public MultiStep
 {
@@ -48,7 +46,7 @@ public:
      * @param final_time The final time of the problem.
      * @param initial_condition The initial condition of the problem.
      * @param function A Function object that includes the actual function of the problem and its Jacobian.
-     * @param beta The vector of coefficients for the Adam-Moulton method (used for function terms).
+     * @param beta The vector of coefficients for the Adam-Moulton method.
      */
     AdamMoulton(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::VectorXd beta);
 

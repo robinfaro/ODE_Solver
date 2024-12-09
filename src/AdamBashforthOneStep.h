@@ -13,8 +13,7 @@
 #include "AdamBashforth.h"
 
 /**
- * @brief A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth one-step method.
- * The Adams-Bashforth one-step method is a first-order explicit method, also known as the Forward Euler method. 
+ * @brief A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth one-step method. 
  * 
  * The method is given by:
  * 
@@ -22,7 +21,7 @@
  * y_{n+1} = y_n + h f(t_n, y_n),
  * \f]
  * 
- * where \( \beta_0 = 1 \) is the only non-zero coefficient in this one-step method.
+ * where \f[ \beta_0 = 1 \f] is the only non-zero coefficient in this one-step method.
  */
 class AdamBashforthOneStep : public AdamBashforth
 {
