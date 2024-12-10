@@ -24,7 +24,7 @@ enum CoeffType { ALPHA, BETA };
  * They are generally written in the form:
  * 
  * \f[
- * y_{n+1} = \sum_{i=0}^{k} \alpha_i y_{n-i} + h \sum_{i=0}^{k} \beta_i f(t_{n-i}, y_{n-i}),
+ * y_{n+1} = \sum_{i=0}^{k} \alpha_i y_{n-i} + h \sum_{i=0}^{k + 1} \beta_i f(t_{n-i}, y_{n-i}),
  * \f]
  * 
  * where:
@@ -66,6 +66,7 @@ public:
      * @param function A Function object that includes the actual function of the problem.
      * @param coefficient The vector of coefficients for the MultiStep method (either alpha or beta).
      * @param coeff_type Specifies whether the coefficient is ALPHA or BETA.
+     * @throws std::invalid_argument if coefficient vector size does not match the number of steps in the initial condition plus one.
      */
     MultiStep(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::VectorXd coefficent, CoeffType coeff_type);
 

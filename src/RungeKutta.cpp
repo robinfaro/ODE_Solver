@@ -29,6 +29,8 @@ RungeKutta::~RungeKutta()
 
 void RungeKutta::SetA(Eigen::MatrixXd a)
 {
+    if (!IsLowerTriangular(a))
+        throw std::invalid_argument("Matrix A must be lower triangular since only explicit solver is suported");
     this->a = a;
 }
 
@@ -43,9 +45,7 @@ void RungeKutta::SetC(Eigen::VectorXd c)
 }
 
 Eigen::MatrixXd RungeKutta::Solve()
-{
-    //solve the Runge-Kutta method
-    
+{    
     auto y0 = initial_condition;
     Eigen::MatrixXd approximations = Eigen::MatrixXd::Zero(y0.col(0).size(), (int)((final_time - initial_time) / step_size) + 1);
     int current_col= 0;    
@@ -53,7 +53,6 @@ Eigen::MatrixXd RungeKutta::Solve()
     current_col++;
     int n_max = approximations.cols();
 
-    //for (double t = initial_time + step_size; t < (final_time+step_size); t += step_size)
     for (int n = 1; n < n_max; n++)
     {
         int s = b.size();
@@ -63,17 +62,12 @@ Eigen::MatrixXd RungeKutta::Solve()
         {
             double time_step = (initial_time + (n-1)*step_size) + c(i) * step_size;
             Eigen::VectorXd y_step = approximations.col(current_col - 1);
-            //std::cout << "y_step: " << y_step.size() << std::endl << std::flush;
             for (int j = 0; j < i; j++)
             {
                 y_step = y_step + (step_size * a(i, j) * k.col(j));
             }
-            //std::cout << "y_step: " << y_step << std::endl << std::flush;
-            //std::cout << "time_step: " << time_step << std::endl << std::flush;
             auto new_rhs = function.BuildRightHandSide(time_step, y_step);
-            //std::cout << "new_rhs: " << new_rhs << std::endl << std::flush;
             k.col(i) = new_rhs;
-            //k.row(i) = function.BuildRightHandSide(time_step, y_step);
         }
         auto y1 = approximations.col(current_col - 1) + step_size * k * b;
         approximations.col(current_col) = y1;

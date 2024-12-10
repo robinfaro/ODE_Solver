@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ * @brief Main file for the ODE_Solver project.
+ */
+
 #include <iostream>
 #include <Eigen/Dense>
 #include <vector>
@@ -6,6 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <regex>
 
 
 #include "ForwardEuler.h"
@@ -24,293 +30,182 @@
 #include "BackwardEuler.h"
 #include "utils.h"
 
-
-int main(int, char**){
-    // InputParameters params = parseInputFile("../input_example.txt");
-
-    // std::cout << "Number of equations: " << params.num_equations << std::endl;
-    // std::cout << "Function matrix:" << std::endl;
-    // for (const auto& row : params.function_matrix) {
-    //     for (const auto& entry : row) {
-    //         std::cout << entry << " ";
-    //     }
-    //     std::cout << std::endl;
-    // }
-
-    // std::cout << "Derivative matrix:" << std::endl;
-    // for (const auto& row : params.derivative_matrix) {
-    //     for (const auto& entry : row) {
-    //         std::cout << entry << " ";
-    //     }
-    //     std::cout << std::endl;
-    // }
-
-    // std::cout << "Method: " << params.method << std::endl;
-
-    // std::cout << "Initial time: " << params.initial_time << std::endl;
-
-    // std::cout << "Final time: " << params.final_time << std::endl;
-
-    // std::cout << "Step size: " << params.step_size << std::endl;
-
-    // std::cout << "Number of steps: " << params.num_steps << std::endl;
-
-    // std::cout << "Initial condition:" << std::endl;
-
-    // printMatrix(params.initial_condition, "Initial condition");
-
-    // std::cout << "Number of stages: " << params.num_stage << std::endl;
-
-    // printMatrix(params.a, "Matrix A");
-
-    // printVector(params.b, "Vector b");
-
-    // printVector(params.c, "Vector c");
-
-    // printVector(params.alpha, "Vector alpha");
-
-    // printVector(params.beta, "Vector beta");
-
-
-    std::vector<std::vector<std::string>> function_combination = {{"+1_6_1", "0", "+1_6_1"}, {"+1_1_1", "-1_6_1", "0"}};
-    std::vector<std::vector<std::string>> derivative_combination = {{"0", "+1_7_1"}, {"-1_7_1", "0"}};
-
-    Function function(function_combination, derivative_combination);
-
-
-    // TEST FUNCTION CLASS
-
-    // Eigen::VectorXd y0(2);
-    // y0(0) = 1;
-    // y0(1) = 0;
-
-    // double t0 = 0;
-
-    //auto rhs = function.BuildRightHandSide(t0, y0);
-    //auto jacobian = function.BuildJacobian(t0, y0);
-
-    //printVector(rhs, "Right hand side");
-
-    //printMatrix(jacobian, "Jacobian");
-
-    // TEST FORWARD EULER SOLVER
-
-    // double initial_time = 0;
-    // double final_time = 1.0;
-    // double step_size = 0.1;
-    // Eigen::VectorXd initial_condition(2);
-    // initial_condition(0) = 1;
-    // initial_condition(1) = 0;
-
-    // ForwardEuler forward_euler(step_size, initial_time, final_time, initial_condition, function);
-
-    // Eigen::MatrixXd solution = forward_euler.Solve();
-
-    // printMatrix(solution, "Forward Euler solution");
-
-    // RUNGE KUTTA 4 TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 1;
-    // double step_size = 0.1;
-    // Eigen::VectorXd initial_condition(2);
-    // initial_condition(0) = 1;
-    // initial_condition(1) = 0;
-    // Eigen::VectorXd b(4);
-    // b << 1.0/6.0, 1.0/3.0, 1.0/3.0, 1.0/6.0;
-    // Eigen::VectorXd c(4);
-    // c << 0, 0.5, 0.5, 1;
-    // Eigen::MatrixXd a(4, 4);
-    // a << 0, 0, 0, 0,
-    //      0.5, 0, 0, 0,
-    //      0, 0.5, 0, 0,
-    //      0, 0, 1, 0;
-    
-    // RungeKutta runge_kutta(step_size, initial_time, final_time, initial_condition, function, a, b, c);
-    // Eigen::MatrixXd solution = runge_kutta.Solve();
-
-    // printMatrix(solution, "Runge Kutta solution");
-
-    // ADAM BASHFORTH-1 TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 1;
-    // double step_size = 0.1;
-    // Eigen::VectorXd initial_condition(2);
-    // initial_condition(0) = 1;
-    // initial_condition(1) = 0;
-
-    // AdamBashforthOneStep adam_bashforth1(step_size, initial_time, final_time, initial_condition, function);
-
-    // Eigen::MatrixXd solution = adam_bashforth1.Solve();
-
-    // printMatrix(solution, "Adam Bashforth 1 solution");
-
-    // ADAM BASHFORTH-2 TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 1;
-    // double step_size = 0.1;
-    // Eigen::MatrixXd initial_condition(2, 2);
-    // initial_condition(0, 0) = 1;
-    // initial_condition(1, 0) = 0;
-    // initial_condition(0, 1) = 1;
-    // initial_condition(1, 1) = -0.1;
-
-    // AdamBashforthTwoSteps adam_bashforth2(step_size, initial_time, final_time, initial_condition, function);
-
-    // Eigen::MatrixXd solution = adam_bashforth2.Solve();
-
-    // printMatrix(solution, "Adam Bashforth 2 solution");
-
-    // ADAM BASHFORTH-3 TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 1;
-    // double step_size = 0.1;
-    // Eigen::MatrixXd initial_condition(2, 3);
-    // initial_condition(0, 0) = 1;
-    // initial_condition(1, 0) = 0;
-    // initial_condition(0, 1) = 1;
-    // initial_condition(1, 1) = -0.1;
-    // initial_condition(0, 2) = 1;
-    // initial_condition(1, 2) = -0.19;
-
-    // AdamBashforthThreeSteps adam_bashforth3(step_size, initial_time, final_time, initial_condition, function);
-
-    // Eigen::MatrixXd solution = adam_bashforth3.Solve();
-
-    // printMatrix(solution, "Adam Bashforth 3 solution");
-
-    // ADAM BASHFORTH-4 TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 1;
-    // double step_size = 0.1;
-    // Eigen::MatrixXd initial_condition(2, 4);
-    // initial_condition(0, 0) = 1;
-    // initial_condition(1, 0) = 0;
-    // initial_condition(0, 1) = 1;
-    // initial_condition(1, 1) = -0.1;
-    // initial_condition(0, 2) = 1;
-    // initial_condition(1, 2) = -0.19;
-    // initial_condition(0, 3) = 1;
-    // initial_condition(1, 3) = -0.27;
-
-    // AdamBashforthFourSteps adam_bashforth4(step_size, initial_time, final_time, initial_condition, function);
-
-    // Eigen::MatrixXd solution = adam_bashforth4.Solve();
-
-    // printMatrix(solution, "Adam Bashforth 4 solution");
-
-
-    // ADAM MOULTON-1 -> BE TEST CASE
-
-    double initial_time = 0;
-    double final_time = 1;
-    double step_size = 0.05;
-    Eigen::MatrixXd initial_condition(2, 1);
-    initial_condition(0, 0) = 1;
-    initial_condition(1, 0) = 0;
-
-    BackwardEuler be(step_size, initial_time, final_time, initial_condition, function);
-
-    Eigen::MatrixXd solution = be.Solve();
-
-    printMatrix(solution, "Backward Euler solution");
-
-    // ADAM MOULTON-3 TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 1;
-    // double step_size = 0.1;
-    // Eigen::MatrixXd initial_condition(2, 3);
-    // initial_condition(0, 0) = 1;
-    // initial_condition(1, 0) = 0;
-    // initial_condition(0, 1) = 1;
-    // initial_condition(1, 1) = -0.1;
-    // initial_condition(0, 2) = 1;
-    // initial_condition(1, 2) = -0.19;
-
-    // Eigen::VectorXd beta(4);
-
-    // beta << 5.0/12.0, 2.0/3.0, -1.0/12.0, 0.0;
-
-    // AdamMoulton adam_moulton(step_size, initial_time, final_time, initial_condition, function, beta);
-
-    // Eigen::MatrixXd solution = adam_moulton.Solve();
-
-    // printMatrix(solution, "Adam Moulton solution");
-
-    // BDF-1 TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 1;
-    // double step_size = 0.1;
-    // Eigen::MatrixXd initial_condition(2, 1);
-    // initial_condition(0, 0) = 1;
-    // initial_condition(1, 0) = 0;
-
-    // Eigen::VectorXd alpha(2);
-
-    // alpha << 1.0, 1.0;
-
-    // BDF bdf(step_size, initial_time, final_time, initial_condition, function, alpha);
-
-    // Eigen::MatrixXd solution = bdf.Solve();
-
-    // printMatrix(solution, "BDF solution");
-
-    // BDF-4 TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 1;
-    // double step_size = 0.1;
-    // Eigen::MatrixXd initial_condition(2, 4);
-    // initial_condition(0, 0) = 1;
-    // initial_condition(1, 0) = 0;
-    // initial_condition(0, 1) = 1;
-    // initial_condition(1, 1) = -0.1;
-    // initial_condition(0, 2) = 1;
-    // initial_condition(1, 2) = -0.19;
-    // initial_condition(0, 3) = 1;
-    // initial_condition(1, 3) = -0.27;
-
-    // Eigen::VectorXd alpha(5);
-
-    // alpha << 25.0/12.0, 4.0, -3.0, 4.0/3.0, -1.0/4.0;
-
-    // BDF bdf(step_size, initial_time, final_time, initial_condition, function, alpha);
-
-    // Eigen::MatrixXd solution = bdf.Solve();
-
-    // printMatrix(solution, "BDF solution");
-
-
-    // TEST SCALAR FUNCTION
-
-    // std::vector<std::vector<std::string>> function_combination = {{"+1_3_-1", "0"}};
-    // std::vector<std::vector<std::string>> derivative_combination = {{"0"}};
-
-    // Function function(function_combination, derivative_combination);
-
-    // // // FORWARD EULER TEST CASE
-
-    // double initial_time = 0;
-    // double final_time = 2.0;
-    // double step_size = 0.1;
-    // Eigen::MatrixXd initial_condition(1, 1);
-    // initial_condition(0, 0) = 1;
-
-    // ForwardEuler forward_euler(step_size, initial_time, final_time, initial_condition, function);
-
-    // Eigen::MatrixXd solution = forward_euler.Solve();
-
-    // printMatrix(solution, "Forward Euler solution");
-
-
-    
-
-
+/**
+ * @brief Parse the input file and Prints the solution of the required ODE with the specified method.
+ * 
+ * @param filename The name of the input file.
+ * @throws std::runtime_error if the number of equations is not provided.
+ * @throws std::runtime_error if the method is not provided.
+ * @throws std::runtime_error if the initial time is not provided.
+ * @throws std::runtime_error if the final time is not provided.
+ * @throws std::runtime_error if the step size is not provided.
+ * @throws std::runtime_error if the function matrix is not provided.
+ * @throws std::runtime_error if the function matrix has a different number of rows than the number of equations.
+ * @throws std::runtime_error if the initial condition matrix has a different number of rows than the number of equations.
+ * @throws std::runtime_error if the initial condition matrix has a different number of columns than the number of steps.
+ */
+int main(int argc, char** argv) {
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <input_file>" << std::endl;
+    }
+    std::string filename = argv[1];
+    InputParameters params = ParseInputFile(filename);
+
+    if (params.num_equations == -1){
+        throw std::runtime_error("Number of equations is not provided.");
+    }
+
+    if (params.method == -1){
+        throw std::runtime_error("Method is not provided.");
+    }
+
+    if (params.initial_time == -1){
+        throw std::runtime_error("Initial time is not provided.");
+    }
+
+    if (params.final_time == -1){
+        throw std::runtime_error("Final time is not provided.");
+    }
+
+    if (params.step_size == -1){
+        throw std::runtime_error("Step size is not provided.");
+    }
+
+    if (params.function_matrix.size() == 0){
+        throw std::runtime_error("Function matrix is not provided.");
+    }
+    bool provided_derivative = false;
+    if (params.function_matrix.size() != params.num_equations){
+        throw std::runtime_error("Invalid row dimension in the function matrix.");
+    }
+
+    Function function(params.function_matrix);
+    if (params.derivative_matrix[0][0] == ""){
+        std::cout << "Derivative matrix is not provided. Be aware that only explicit methods can be employed." << std::endl;
+    }
+    else{
+        function.SetDerivativeCombination(params.derivative_matrix);
+        provided_derivative = true;
+    }
+
+    double step_size = params.step_size;
+    double initial_time = params.initial_time;
+    double final_time = params.final_time;
+    if (params.num_equations != params.initial_condition.rows()){
+        throw std::runtime_error("Invalid row dimension in the initial condition matrix, it should match the number of equations.");
+    }
+    if (params.num_steps!= params.initial_condition.cols()){
+        throw std::runtime_error("Invalid column dimension in the initial condition matrix, it should match the number of steps.");
+    }
+    Eigen::MatrixXd initial_condition = params.initial_condition;
+    int num_steps = params.num_steps;
+
+    switch(params.method){
+        case 1:
+            {
+            std::cout << "Forward Euler method" << std::endl;
+            ForwardEuler solver(step_size, initial_time, final_time, initial_condition, function);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+            
+        case 2:
+            {
+            std::cout << "Adam-Bashforth one-step" << std::endl;
+            AdamBashforthOneStep solver(step_size, initial_time, final_time, initial_condition, function);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        case 3:
+            {
+            std::cout << "Adam-Bashforth two-steps" << std::endl;
+            AdamBashforthTwoSteps solver(step_size, initial_time, final_time, initial_condition, function);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        case 4:
+            {
+            std::cout << "Adam-Bashforth three-steps" << std::endl;
+            AdamBashforthThreeSteps solver(step_size, initial_time, final_time, initial_condition, function);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        case 5:
+            {
+            std::cout << "Adam-Bashforth four-steps" << std::endl;
+            AdamBashforthFourSteps solver(step_size, initial_time, final_time, initial_condition, function);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        case 6:
+            {
+            if (!provided_derivative){
+                throw std::runtime_error("Derivative matrix is not provided for the Backward Euler method");
+            }
+            std::cout << "Backward Euler method" << std::endl; 
+            BackwardEuler solver(step_size, initial_time, final_time, initial_condition, function);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        case 7:
+            {
+            Eigen::MatrixXd a = params.a;
+            Eigen::VectorXd b = params.b;
+            Eigen::VectorXd c = params.c;
+            if (a.size() == 0 || b.size() == 0 || c.size() == 0){
+                throw std::runtime_error("Invalid Runge-Kutta method parameters. You should provide the matrix A, vector b, and vector c in the input file.");
+            }
+            std::cout << "Runge Kutta Method" << std::endl;
+            RungeKutta solver(step_size, initial_time, final_time, initial_condition, function, a, b, c);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        case 8:
+            {
+            std::cout << "Backward Differentiation Formula" << std::endl;
+            Eigen::VectorXd alpha = params.alpha;
+            if (alpha.size() == 0){
+                throw std::runtime_error("Invalid BDF method parameters. You should provide the vector alpha in the input file.");
+            }
+            BDF solver(step_size, initial_time, final_time, initial_condition, function, alpha);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        case 9:
+            {
+            Eigen::VectorXd beta = params.beta;
+            if (beta.size() == 0){
+                throw std::runtime_error("Invalid Adam-Moulton method parameters. You should provide the vector beta in the input file.");
+            }
+            std::cout << "Adam Moulton Method" << std::endl;
+            AdamMoulton solver(step_size, initial_time, final_time, initial_condition, function, beta);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        case 10:
+            {
+            Eigen::VectorXd beta = params.beta;
+            if (beta.size() == 0){
+                throw std::runtime_error("Invalid Adam-Bashforth method parameters. You should provide the vector beta in the input file.");
+            }            
+            std::cout << "Generic Adam-Bashforth Method" << std::endl;
+            AdamBashforth solver(step_size, initial_time, final_time, initial_condition, function, beta);
+            Eigen::MatrixXd approximations = solver.Solve();
+            PrintMatrix(approximations, "Approximations");
+            break;
+            }
+        default:
+            std::cout << "Invalid method" << std::endl;
+            break;
+    }
 
 }

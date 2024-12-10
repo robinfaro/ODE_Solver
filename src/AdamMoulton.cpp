@@ -38,7 +38,6 @@ Eigen::MatrixXd AdamMoulton::Solve()
     }
     int current_col = beta.size() - 1;
 
-    //for (double t =  initial_time + (current_col * step_size); t < final_time; t += step_size)
     for (int n = current_col; n < n_max; n++)
     {
         double t = initial_time + (n * step_size);
@@ -49,8 +48,6 @@ Eigen::MatrixXd AdamMoulton::Solve()
         }
         NewtonMethod newton_solver(function, approximations.col(current_col - 1), t, beta(0), sum, step_size);
         auto y1 = newton_solver.Solve();
-        // destroy newton_solver
-        //newton_solver.~NewtonMethod();
 
         approximations.col(current_col) = y1;
         current_col++;

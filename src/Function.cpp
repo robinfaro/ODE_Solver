@@ -8,7 +8,8 @@
 
 Function::Function()
 {
-    this->pattern = std::regex("([-+]?[0-9]+)_([1-7])_\\(?([-]?[0-9]+)\\)?");
+    //this->pattern = std::regex("([-+]?[0-9]+)_([1-7])_\\(?([-]?[0-9]+)\\)?");
+    this->pattern = std::regex("([-+]?[0-9]*\\.?[0-9]+)_([1-7])_\\(?([-+]?[0-9]*\\.?[0-9]+)\\)?");
     this->match = std::smatch();
 }
 
@@ -18,13 +19,17 @@ Function::Function(std::vector<std::vector<std::string>> function_combination, s
         throw std::invalid_argument("Derivative combination must be square matrix");
     this->function_combination = function_combination;
     this->derivative_combination = derivative_combination;
-    this->pattern = std::regex("([-+]?[0-9]+)_([1-7])_\\(?([-]?[0-9]+)\\)?");
+    //this->pattern = std::regex("([-+]?[0-9]+)_([1-7])_\\(?([-]?[0-9]+)\\)?");
+    this->pattern = std::regex("([-+]?[0-9]*\\.?[0-9]+)_([1-7])_\\(?([-+]?[0-9]*\\.?[0-9]+)\\)?");
     this->match = std::smatch();
 }
 
 Function::Function(std::vector<std::vector<std::string>> function_combination)
 {
     this->function_combination = function_combination;
+    //this->pattern = std::regex("([-+]?[0-9]+)_([1-7])_\\(?([-]?[0-9]+)\\)?");
+    this->pattern = std::regex("([-+]?[0-9]*\\.?[0-9]+)_([1-7])_\\(?([-+]?[0-9]*\\.?[0-9]+)\\)?");
+    this->match = std::smatch();
 }
 
 Function::~Function()
@@ -109,7 +114,7 @@ Eigen::VectorXd Function::BuildRightHandSide(double t, Eigen::VectorXd y)
             if (!std::regex_match(entry, match, pattern))
                 throw std::invalid_argument("Invalid input: " + entry);
 
-            int multiplier  = std::stoi(match[1]);
+            double multiplier  = std::stod(match[1]);
             int function = std::stoi(match[2]);
             double param = std::stod(match[3]);
 

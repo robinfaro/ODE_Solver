@@ -5,8 +5,23 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <map>
+#include <cctype>
 #include <stdexcept>
 #include "utils.h"
+
+double ParseFraction(const std::string& fraction) {
+    size_t pos = fraction.find("/");
+    if (pos == std::string::npos) {
+        return std::stod(fraction);
+    }
+    double numerator = std::stod(fraction.substr(0, pos));
+    double denominator = std::stod(fraction.substr(pos + 1));
+    if (denominator == 0) {
+        throw std::invalid_argument("Denominator cannot be zero: " + fraction);
+    }
+    return numerator / denominator;
+}
 
 bool IsLowerTriangular(const Eigen::MatrixXd& matrix) {
     if (matrix.rows() != matrix.cols()) {
@@ -37,7 +52,7 @@ bool IsSquareMatrix(const std::vector<std::vector<std::string>>& matrix) {
 }
 
 // Function to print Eigen vectors
-void printVector(const Eigen::VectorXd& vec, const std::string& name) {
+void PrintVector(const Eigen::VectorXd& vec, const std::string& name) {
     std::cout.precision(4);
     std::cout << name << " (" << vec.size() << "): [ ";
     for (int i = 0; i < vec.size(); ++i) {
@@ -48,7 +63,7 @@ void printVector(const Eigen::VectorXd& vec, const std::string& name) {
 }
 
 // Function to print Eigen matrices
-void printMatrix(const Eigen::MatrixXd& mat, const std::string& name) {
+void PrintMatrix(const Eigen::MatrixXd& mat, const std::string& name) {
     std::cout.precision(4);
     std::cout << name << " (" << mat.rows() << "x" << mat.cols() << "):" << std::endl;
     for (int i = 0; i < mat.rows(); ++i) {
@@ -61,8 +76,7 @@ void printMatrix(const Eigen::MatrixXd& mat, const std::string& name) {
     }
 }
 
-
-InputParameters parseInputFile(const std::string& filename) {
+InputParameters ParseInputFile(const std::string& filename) {
     InputParameters params;
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -70,212 +84,158 @@ InputParameters parseInputFile(const std::string& filename) {
     }
 
     std::string line;
-    std::istringstream iss;
+    std::string current_key; // Tracks the current key
+    std::map<std::string, std::vector<std::string>> data; // Map to store parsed lines for each key
 
-    // Read number of equations
-    std::getline(file, line);
-    iss.str(line);
-    iss >> params.num_equations;
-    iss.clear();
+    // Helper function to trim leading/trailing whitespace
+    auto trim = [](const std::string& str) {
+        size_t first = str.find_first_not_of(" \t");
+        size_t last = str.find_last_not_of(" \t");
+        return (first == std::string::npos || last == std::string::npos) ? "" : str.substr(first, last - first + 1);
+    };
 
-    // Read functionMatrix
-    for (int i = 0; i < (params.num_equations + 1); ++i) {
-        std::getline(file, line);
-        std::istringstream matrix_line(line);
-        std::vector<std::string> row;
-        std::string entry;
-        while (matrix_line >> entry) {
-            row.push_back(entry);
+    // Read the file and parse into a map
+    while (std::getline(file, line)) {
+        line = trim(line);
+
+        if (line.empty()) continue; // Skip empty lines
+
+        if (std::isalpha(line[0])) {
+            // New key starts with an alphabetic character
+            size_t colonPos = line.find(":");
+            if (colonPos == std::string::npos) {
+                throw std::runtime_error("Invalid format: Missing colon in line: " + line);
+            }
+            current_key = trim(line.substr(0, colonPos));
+            data[current_key].push_back(line.substr(colonPos + 1));
+        } else if (!current_key.empty()) {
+            // Continuation of the previous key
+            data[current_key].push_back(trim(line));
+        } else {
+            throw std::runtime_error("Invalid format: Value without a key: " + line);
         }
-        params.function_matrix.push_back(row);
     }
 
-    std::getline(file, line);
-    // Read derivativeMatrix (optional)
-    if (line != "NA") 
-    { 
-        for (int i = 0; i < params.num_equations; ++i) {
-            if (i != 0) {
-                std::getline(file, line);
-            }
-            std::istringstream matrix_line(line);
+    file.close();
+
+    // Process the parsed map into InputParameters
+    if (data.count("Number of equations")) {
+        params.num_equations = std::stoi(data["Number of equations"][0]);
+    }
+
+    if (data.count("Function combination")) {
+        for (const auto& line : data["Function combination"]) {
+            std::istringstream iss(line);
             std::vector<std::string> row;
             std::string entry;
-            while (matrix_line >> entry) {
+            while (iss >> entry) {
+                row.push_back(entry);
+            }
+            params.function_matrix.push_back(row);
+        }
+    }
+
+    if (data.count("Derivative combination") && trim(data["Derivative combination"][0]) != "NA") {
+        for (const auto& line : data["Derivative combination"]) {
+            std::istringstream iss(line);
+            std::vector<std::string> row;
+            std::string entry;
+            while (iss >> entry) {
                 row.push_back(entry);
             }
             params.derivative_matrix.push_back(row);
         }
     }
+    else {
+        params.derivative_matrix = {{""}};
+    }
 
-    std::getline(file, line);
-    iss.str(line);
-    iss >> params.method;
-    iss.clear();
+    if (data.count("Method")) {
+        params.method = std::stoi(data["Method"][0]);
+    }
 
-    // Read initial time, final time, and step size
-    std::getline(file, line);
-    iss.str(line);
-    iss >> params.initial_time >> params.final_time >> params.step_size;
-    iss.clear();
+    if (data.count("Initial Time") && data.count("Final Time") && data.count("Step Size")) {
+        params.initial_time = ParseFraction(data["Initial Time"][0]);
+        params.final_time = ParseFraction(data["Final Time"][0]);
+        params.step_size = ParseFraction(data["Step Size"][0]);
+    }
 
-    // Read number of steps
-    std::getline(file, line);
-    iss.str(line);
-    iss >> params.num_steps;
-    iss.clear();
+    if (data.count("Number of Steps")) {
+        params.num_steps = std::stoi(data["Number of Steps"][0]);
+    }
 
-    // Read initial condition matrix
-    std::getline(file, line);
-    if (line != "NA") 
-    {
-        // Temporary storage for all matrix entries in a single vector
+    if (data.count("Initial Condition") && trim(data["Initial Condition"][0]) != "NA") {
         std::vector<double> flat_matrix;
-
-        int num_rows = params.num_steps;
-        int num_cols = params.num_equations;
-
-        // Read the first row
-        std::istringstream matrix_line(line);
-        double value;
-        int col_count = 0;
-        while (matrix_line >> value) {
-            flat_matrix.push_back(value);
-            ++col_count;
-        }
-        std :: cout << "col_count: " << col_count << std::endl;
-        std :: cout << "read : " << flat_matrix.size() << std::endl;
-        if (col_count != num_cols) {
-            throw std::runtime_error("Invalid number of columns in initial condition matrix");
-        }
-
-        // Read the remaining rows
-        for (int i = 1; i < num_rows; ++i) {
-            std::getline(file, line);
-            std::istringstream matrix_line(line);
-            while (matrix_line >> value) {
+        for (const auto& line : data["Initial Condition"]) {
+            std::istringstream iss(line);
+            double value;
+            while (iss >> value) {
                 flat_matrix.push_back(value);
             }
         }
-
-        Eigen::MatrixXd initial_condition(num_rows, num_cols);
-        for (int i = 0; i < num_rows; ++i) {
-            for (int j = 0; j < num_cols; ++j) {
-                std :: cout << flat_matrix[i*num_cols + j] << " ";
-                initial_condition(i, j) = flat_matrix[i*num_cols + j];
-            }
-            std :: cout << std::endl;
-        }
-
-        params.initial_condition = initial_condition.transpose();
-        
-        // Use Eigen::Map to construct an Eigen::MatrixXd from the flat vector
-        //params.initial_condition = Eigen::Map<Eigen::MatrixXd>(flat_matrix.data(), num_rows, num_cols);
+        params.initial_condition = Eigen::Map<Eigen::MatrixXd>(flat_matrix.data(), params.num_equations, params.num_steps);
     }
 
-    std::getline(file, line);
-    if (line != "NA") 
-    {
-        iss.str(line);
-        iss >> params.num_stage;
-        iss.clear();
+    if (data.count("Number of Stages")) {
+        params.num_stage = std::stoi(data["Number of Stages"][0]);
     }
 
-    std::getline(file, line);
-    //std::cout << "line: " << (line=="NA") << std::endl;
-    // Read A (optional)
-    if (line != "NA") 
-    {
-        // Temporary storage for all matrix entries in a single vector
+    if (data.count("A") && trim(data["A"][0]) != "NA") {
         std::vector<double> flat_matrix;
-
-        int num_rows = params.num_stage;
-        int num_cols = params.num_stage;
-
-        // Read the first row
-        std::istringstream matrix_line(line);
-        double value;
-        int col_count = 0;
-        while (matrix_line >> value) {
-            flat_matrix.push_back(value);
-            ++col_count;
-        }
-        if (col_count != num_cols) {
-            throw std::runtime_error("Invalid number of columns in matrixA");
-        }
-
-        // Read the remaining rows
-        for (int i = 1; i < num_rows; ++i) {
-            std::getline(file, line);
-            std::istringstream matrix_line(line);
-            while (matrix_line >> value) {
-                flat_matrix.push_back(value);
+        for (const auto& line : data["A"]) {
+            std::istringstream iss(line);
+            std::string value;
+            while (iss >> value) {
+                flat_matrix.push_back(ParseFraction(value));
             }
         }
-
-        Eigen::MatrixXd a(num_rows, num_cols);
-        for (int i = 0; i < num_rows; ++i) {
-            for (int j = 0; j < num_cols; ++j) {
-                a(i, j) = flat_matrix[i*num_cols + j];
-            }
-        }
-
-        params.a = a;
+        params.a = Eigen::Map<Eigen::MatrixXd>(flat_matrix.data(), params.num_stage, params.num_stage).transpose();
     }
 
-
-    // Read B vector (optional)
-    std::getline(file, line);
-
-    if (line != "NA") {
-        std::istringstream vector_line(line);
-        double value;
+    if (data.count("B") && trim(data["B"][0]) != "NA") {
+        std::istringstream iss(data["B"][0]);
         std::vector<double> vector;
-        while (vector_line >> value) {
-            vector.push_back(value);
+        std::string value;
+        while (iss >> value) {
+            vector.push_back(ParseFraction(value));
         }
         params.b = Eigen::Map<Eigen::VectorXd>(vector.data(), vector.size());
     }
 
-    // Read C vector (optional)
-    std::getline(file, line);
-
-    if (line != "NA") {
-        std::istringstream vector_line(line);
-        double value;
+    if (data.count("C") && trim(data["C"][0]) != "NA") {
+        std::istringstream iss(data["C"][0]);
         std::vector<double> vector;
-        while (vector_line >> value) {
-            vector.push_back(value);
+        std::string value;
+        while (iss >> value) {
+            vector.push_back(ParseFraction(value));
         }
         params.c = Eigen::Map<Eigen::VectorXd>(vector.data(), vector.size());
+        PrintVector(params.c, "C");
     }
 
-    // Read alpha vector (optional)
-
-    std::getline(file, line);
-    if (line != "NA") {
-        std::istringstream vector_line(line);
-        double value;
+    if (data.count("Alpha") && trim(data["Alpha"][0]) != "NA") {
+        std::cout << data["Alpha"][0] << std::endl;
+        std::istringstream iss(data["Alpha"][0]);
         std::vector<double> vector;
-        while (vector_line >> value) {
-            vector.push_back(value);
+        std::string value;
+        while (iss >> value) {
+            vector.push_back(ParseFraction(value));
         }
         params.alpha = Eigen::Map<Eigen::VectorXd>(vector.data(), vector.size());
+
     }
 
-    // Read beta vector (optional)
-
-    std::getline(file, line);
-    if (line != "NA") {
-        std::istringstream vector_line(line);
-        double value;
+    if (data.count("Beta") && trim(data["Beta"][0]) != "NA") {
+        std::istringstream iss(data["Beta"][0]);
         std::vector<double> vector;
-        while (vector_line >> value) {
-            vector.push_back(value);
+        std::string value;
+        while (iss >> value) {
+            vector.push_back(ParseFraction(value));
         }
         params.beta = Eigen::Map<Eigen::VectorXd>(vector.data(), vector.size());
     }
 
-    file.close();
+    std::cout << "Parsed input parameters:" << std::endl;
+
     return params;
 }

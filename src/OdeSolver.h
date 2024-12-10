@@ -51,6 +51,8 @@ public:
      * @param final_time The final time of the problem.
      * @param initial_condition The initial condition of the problem.
      * @param function A Function object that includes the actual function of the problem and optionally its derivative (needed if the method is implicit).
+     * @throws std::invalid_argument if the step size is not positive.
+     * @throws std::invalid_argument if the final time is smaller than initial time.
      */
     OdeSolver(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function);
     
@@ -62,6 +64,7 @@ public:
     /**
      * @brief Set the step size for the solver.
      * @param step_size The step size for the solver.
+     * @throws std::invalid_argument if the step size is not positive.
      */
     void SetStepSize(double step_size);
 
@@ -69,6 +72,7 @@ public:
      * @brief Set the time interval of the problem.
      * @param initial_time The initial time of the problem.
      * @param final_time The final time of the problem.
+     * @throws std::invalid_argument if the final time is smaller than initial time.
      */
     void SetTimeInterval(double initial_time, double final_time);
 

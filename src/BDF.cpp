@@ -48,7 +48,6 @@ Eigen::MatrixXd BDF::Solve()
         auto y1 = newton_solver.Solve();
 
         approximations.col(current_col) = y1;
-        //y0 = y1;
         current_col++;
     }
 

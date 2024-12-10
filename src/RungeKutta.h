@@ -59,6 +59,8 @@ public:
      * @param a The matrix of coefficients for the Runge-Kutta method.
      * @param b The vector of coefficients for the Runge-Kutta method.
      * @param c The vector of coefficients for the Runge-Kutta method.
+     * @throws std::invalid_argument if matrix a is not lower triangular.
+     * @throws std::invalid_argument if the size of b and c are different from the number of rows of a.
      */
     RungeKutta(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::MatrixXd a, Eigen::VectorXd b, Eigen::VectorXd c);
     
@@ -81,6 +83,7 @@ public:
     /**
      * @brief Set the matrix of coefficients for the Runge-Kutta method.
      * @param a The matrix of coefficients for the Runge-Kutta method.
+     * @throws std::invalid_argument if matrix a is not lower triangular.
      */
     void SetA(Eigen::MatrixXd a);
 
