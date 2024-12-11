@@ -25,22 +25,7 @@
 #include "../src/BackwardEuler.h"
 
 
-// Set up function for scalar function test
-class ScalarODETest : public ::testing::Test {
-protected:
-    void SetUp() override {
-        std::vector<std::vector<std::string>> function_combination = {{"+1_3_-1", "1_2_1"}};
-        std::vector<std::vector<std::string>> derivative_combination = {{"-1_1_1"}};
-        function.SetFunctionCombination(function_combination);
-        function.SetDerivativeCombination(derivative_combination);
-    }
-    double initial_time = 0;
-    double final_time = 2.0;
-    double step_size = 0.1;
-    Function function;
-
-};
-
+// **************************** Vector function tests *******************************
 
 // Set up function for vector function test
 class VectorODETest : public ::testing::Test {
@@ -181,7 +166,7 @@ TEST_F(VectorODETest, BackwardEuler){
     expected << 1.0, 1.0009884496697705, 1.0039243491559324, 1.0097182680284233, 1.0192142280435652, 1.0331727162819297, 1.0522550784695492, 1.0770095223064808, 1.107858937656511, 1.145090714991844, 1.188848715004749, // y1 values
                 0.0, -0.09011550330229423, -0.17064100513838135, -0.24206081127508972, -0.30504039984858117, -0.36041511761635386, -0.4091763781238025, -0.45245556163068423, -0.4915058463082971, -0.5276822268446671, -0.5624199998643524; // y2 values
 
-    ASSERT_TRUE(approximations.isApprox(expected, 1e-1));
+    ASSERT_TRUE(approximations.isApprox(expected, 1e-4));
 
 }
 
@@ -223,9 +208,27 @@ TEST_F(VectorODETest, BDF1){
     Eigen::MatrixXd expected(2, 11);
     expected << 1.0, 1.0009884496697705, 1.0039243491559324, 1.0097182680284233, 1.0192142280435652, 1.0331727162819297, 1.0522550784695492, 1.0770095223064808, 1.107858937656511, 1.145090714991844, 1.188848715004749, // y1 values
                 0.0, -0.09011550330229423, -0.17064100513838135, -0.24206081127508972, -0.30504039984858117, -0.36041511761635386, -0.4091763781238025, -0.45245556163068423, -0.4915058463082971, -0.5276822268446671, -0.5624199998643524; // y2 values
+
+    ASSERT_TRUE(approximations.isApprox(expected, 1e-4));
 }
 
-// Scalar function test
+// **************************** Scalar function tests *******************************
+
+// Set up function for scalar function test
+class ScalarODETest : public ::testing::Test {
+protected:
+    void SetUp() override {
+        std::vector<std::vector<std::string>> function_combination = {{"+1_3_-1", "1_2_1"}};
+        std::vector<std::vector<std::string>> derivative_combination = {{"-1_1_1"}};
+        function.SetFunctionCombination(function_combination);
+        function.SetDerivativeCombination(derivative_combination);
+    }
+    double initial_time = 0;
+    double final_time = 2.0;
+    double step_size = 0.1;
+    Function function;
+
+};
 
 TEST_F(ScalarODETest, ForwardEuler) {
     Eigen::MatrixXd initial_condition(1, 1);
@@ -335,16 +338,12 @@ TEST_F(ScalarODETest, BackwardEuler){
     Eigen::MatrixXd approximations = method.Solve();
 
     Eigen::MatrixXd expected(1, 21);
-    expected << 0.0, 0.1887084750059145, 0.3640285579051505, 0.5246598194213946, 
-                0.6700696643634951, 0.8003670649487918, 0.9161371226125106, 
-                1.0182788325796095, 1.107868681449309, 1.186057366682921, 
-                1.253997901366658, 1.3127994350999854, 1.3635003122529195, 
-                1.4070545939079822, 1.4443274879832952, 1.4760963530906126, 
-                1.5030549616309807, 1.525819482238543, 1.5449351958956796, 
-                1.5608833402383078, 1.5740877289415809;
+    expected << 0, 0.1887, 0.3640, 0.5247, 0.6701, 0.8004, 0.9161, 1.0183, 1.1079, 1.1861, 1.2540, 1.3128, 1.3635, 1.4071, 1.4443, 1.4761, 
+    1.5031, 1.5258, 1.5449, 1.5609, 1.5741;
 
-    ASSERT_TRUE(approximations.isApprox(expected, 1e-1));
+    ASSERT_TRUE(approximations.isApprox(expected, 1e-4));
 }
+
 
 TEST_F(ScalarODETest, AdamMoulton3){
     Eigen::MatrixXd initial_condition(1, 3);
