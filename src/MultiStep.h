@@ -31,7 +31,7 @@ enum CoeffType { ALPHA, BETA };
  * - \f$ y_{n+1} \f$: the solution at the next time step.
  * - \f$ y_{n-i} \f$: the solutions at previous time steps.
  * - \f$ f(t, y) \f$: the derivative of the function \f$ \frac{dy}{dt} \f$.
- * - \f$ \alpha_i, \beta_i \f&: coefficients that change according to the multi-step method employed.
+ * - \f$ \alpha_i, \beta_i \f$: coefficients that change according to the multi-step method employed.
  * - \f$ h \f$: the time step size.
  * - \f$ k \f$: the number of previous steps used in the method.
  * 
@@ -64,7 +64,7 @@ public:
      * @param final_time The final time of the problem.
      * @param initial_condition The initial condition of the problem.
      * @param function A Function object that includes the actual function of the problem.
-     * @param coefficient The vector of coefficients for the MultiStep method (either alpha or beta).
+     * @param coefficent The vector of coefficients for the MultiStep method (either alpha or beta).
      * @param coeff_type Specifies whether the coefficient is ALPHA or BETA.
      * @throws std::invalid_argument If coefficient vector size does not match the number of steps in the initial condition plus one.
      */
