@@ -34,15 +34,15 @@
  * @brief Parse the input file and Prints the solution of the required ODE with the specified method.
  * 
  * @param filename The name of the input file.
- * @throws std::runtime_error if the number of equations is not provided.
- * @throws std::runtime_error if the method is not provided.
- * @throws std::runtime_error if the initial time is not provided.
- * @throws std::runtime_error if the final time is not provided.
- * @throws std::runtime_error if the step size is not provided.
- * @throws std::runtime_error if the function matrix is not provided.
- * @throws std::runtime_error if the function matrix has a different number of rows than the number of equations.
- * @throws std::runtime_error if the initial condition matrix has a different number of rows than the number of equations.
- * @throws std::runtime_error if the initial condition matrix has a different number of columns than the number of steps.
+ * @throws std::runtime_error If the number of equations is not provided.
+ * @throws std::runtime_error If the method is not provided.
+ * @throws std::runtime_error If the initial time is not provided.
+ * @throws std::runtime_error If the final time is not provided.
+ * @throws std::runtime_error If the step size is not provided.
+ * @throws std::runtime_error If the function matrix is not provided.
+ * @throws std::runtime_error If the function matrix has a different number of rows than the number of equations.
+ * @throws std::runtime_error If the initial condition matrix has a different number of rows than the number of equations.
+ * @throws std::runtime_error If the initial condition matrix has a different number of columns than the number of steps.
  */
 int main(int argc, char** argv) {
     if (argc != 2) {

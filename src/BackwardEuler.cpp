@@ -18,6 +18,6 @@ BackwardEuler::~BackwardEuler()
 void BackwardEuler::SetBeta()
 {
     beta = Eigen::VectorXd::Zero(2);
-    beta(0) = 0.0;
-    beta(1) = 1.0;
+    beta(0) = 1.0;
+    beta(1) = 0.0;
 }

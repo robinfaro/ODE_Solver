@@ -16,7 +16,7 @@
  * 
  * @param fraction The string representing the fraction.
  * @return double The result of the fraction as a double.
- * @throws std::invalid_argument if the denominator is zero.
+ * @throws std::invalid_argument If the denominator is zero.
  */
 double ParseFraction(const std::string& fraction);
 
@@ -93,7 +93,7 @@ struct InputParameters {
  * 
  * @param filename The name of the input file.
  * @return InputParameters A structure containing the parsed parameters.
- * @throws std::runtime_error if the input file is not found or if there is an error in the input file.
+ * @throws std::runtime_error If the input file is not found or if there is an error in the input file.
  */
 InputParameters ParseInputFile(const std::string& filename);
 
