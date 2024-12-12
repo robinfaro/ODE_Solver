@@ -278,6 +278,22 @@ Simply open the relevant input file, edit the parameters as needed, and pass the
 We also provide an empty skeleton file, **`empty_input_file.txt`**, where you can define your own parameters for a completely custom setup.
 
 
+## Coding Convention
+
+We follow the **Google C++ Style Guide** coding convenction for our project. You can find the full guidelines [here](https://google.github.io/styleguide/cppguide.html).
+
+### Key Conventions Used:
+1. **Variable Naming:**
+   - Variables are written in lowercase, with words separated by underscores.
+   - Example: `variable_name`, `matrix_size`.
+
+2. **Class and Function Naming:**
+   - Classes and functions start with an uppercase letter, with subsequent words also capitalized (CamelCase).
+   - Example: `ClassName`, `FunctionName`.
+
+3. **Consistency with Google Style Guide:**
+   - The overall structure, indentation, and formatting of the code align with the Google Style Guide recommendations.
+
 ## TODOs and future works
 
 1. **Extend RK Methods:** Add support for implicit Runge-Kutta methods.
