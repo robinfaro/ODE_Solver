@@ -132,14 +132,14 @@ This format ensures all keys are present, even if no values are provided. If a v
 #### Explanation of Entries:
 - **Number of equations:** Number of ODEs in the system.
 - **Function combination:** Defines the function matrix for \f$f_i(t, y_1, ..., y_n)\f$. Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable or the time variable (\f$t\f$) in that equation. Entries follow the format `multiplier_functionNumber_parameter` or `0` if the corresponding variable (\f$t\f$ or \f$y_i\f$) does not contribute to that row.
-- **Derivative combination:** Defines the Jacobian matrix (if needed). Each row corresponds to one equation in the system, and entries follow the same format as the function combination.
+- **Derivative combination:** Defines the Jacobian matrix (if needed). Each row corresponds to one equation in the system and entries follow the same format as the function combination.
 - **Method:** Specifies the numerical method to use (see the method list above).
 - **Initial Time:** The starting time for the simulation.
 - **Final Time:** The ending time for the simulation.
 - **Step Size:** The time step for the simulation.
-- **Number of Steps:** Number of time steps to calculate.
+- **Number of Steps:** Number of steps of the method.
 - **Initial Condition:** Each row represents the values of \f$y_1, ..., y_n\f$ at a given time step. For example, if there are three initial conditions provided, the user will pass three rows, each containing the values for all variables in the system.
-- **Number of Stages, A, B, C, Alpha, Beta:** Parameters for specific methods (e.g., RK, BDF, AM). For the Runge-Kutta method, the matrix A is provided by rows, and the vectors B and C are listed as single-line entries. The A matrix must be lower triangular for explicit methods.
+- **Number of Stages, A, B, C, Alpha, Beta:** Parameters for specific methods (e.g., RK, BDF, AM). For the Runge-Kutta method, the matrix A is provided by rows and the vectors B and C are listed as single-line entries. The A matrix must be lower triangular for explicit methods.
 
 #### Note on Parsing:
 - Each input parameter begins with a **key** (e.g., `Number of equations:`, `Function combination:`).
