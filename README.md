@@ -44,16 +44,16 @@ This will allow you to solve a system of differential equations with your desire
 
 ### Example System
 We provide 10 methods to solve Vectorial ODEs, assuming the system is in the form:
-$$
+\f[
 \frac{dy_1}{dt} = f_1(y_1, ..., y_n, t)\\
 \vdots\\
 \frac{dy_n}{dt} = f_n(y_1, ..., y_n, t)
-$$
+\f]
 
-Each $f_i(y_1, ..., y_n, t)$ is a combination of basic mathematical functions f. For example:
-$$
+Each \f$f_i(y_1, ..., y_n, t)\f$ is a combination of basic mathematical functions f. For example:
+\f[
 f_i(y_1, ..., y_n, t) = m_t \text{f}_t(t) + m_j \text{f}_j(y_1) +  \ldots + m_k\text{f}_k(y_n)
-$$
+\f]
 
 ---
 
@@ -61,25 +61,25 @@ $$
 The following basic mathematical functions can be used to construct the system:
 
 1. **Sine Function:**
-   $$ \text{f1}(x, \text{param}) = \sin(\text{param} \cdot x) $$
+   \f[ \text{f1}(x, \text{param}) = \sin(\text{param} \cdot x) \f]
 
 2. **Cosine Function:**
-   $$ \text{f2}(x, \text{param}) = \cos(\text{param} \cdot x) $$
+   \f[ \text{f2}(x, \text{param}) = \cos(\text{param} \cdot x) \f]
 
 3. **Exponential Function:**
-   $$ \text{f3}(x, \text{param}) = e^{\text{param} \cdot x} $$
+   \f[ \text{f3}(x, \text{param}) = e^{\text{param} \cdot x} \f]
 
 4. **Power Function:**
-   $$ \text{f4}(x, \text{param}) = x^{\text{param}} $$
+   \f[ \text{f4}(x, \text{param}) = x^{\text{param}} \f]
 
 5. **Logarithmic Function:**
-   $$ \text{f5}(x, \text{param}) = \log(\text{param} \cdot x) $$
+   \f[ \text{f5}(x, \text{param}) = \log(\text{param} \cdot x) \f]
 
 6. **Identity Function:**
-   $$ \text{f6}(x, \text{param}) = \text{param} \cdot x $$
+   \f[ \text{f6}(x, \text{param}) = \text{param} \cdot x \f]
 
 7. **Constant Function:**
-   $$ \text{f7}(x, \text{param}) = \text{param} $$
+   \f[ \text{f7}(x, \text{param}) = \text{param} \f]
 
 Each function is combined within the system equations using a multiplier and parameter, following the format specified in the input file.
 
@@ -126,14 +126,14 @@ This format ensures all keys are present, even if no values are provided. If a v
 
 #### Explanation of Entries:
 - **Number of equations:** Number of ODEs in the system.
-- **Function combination:** Defines the function matrix for $f_i(t, y_1, ..., y_n)$. Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable or the time variable ($t$) in that equation. Entries follow the format `multiplier_functionNumber_parameter` or `0` if the corresponding variable ($t$ or $y_i$) does not contribute to that row.
+- **Function combination:** Defines the function matrix for \f$f_i(t, y_1, ..., y_n)\f$. Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable or the time variable (\f$t\f$) in that equation. Entries follow the format `multiplier_functionNumber_parameter` or `0` if the corresponding variable (\f$t\f$ or \f$y_i\f$) does not contribute to that row.
 - **Derivative combination:** Defines the Jacobian matrix (if needed). Each row corresponds to one equation in the system, and entries follow the same format as the function combination.
 - **Method:** Specifies the numerical method to use (see the method list above).
 - **Initial Time:** The starting time for the simulation.
 - **Final Time:** The ending time for the simulation.
 - **Step Size:** The time step for the simulation.
 - **Number of Steps:** Number of time steps to calculate.
-- **Initial Condition:** Each row represents the values of $y_1, ..., y_n$ at a given time step. For example, if there are three initial conditions provided, the user will pass three rows, each containing the values for all variables in the system.
+- **Initial Condition:** Each row represents the values of \f$y_1, ..., y_n\f$ at a given time step. For example, if there are three initial conditions provided, the user will pass three rows, each containing the values for all variables in the system.
 - **Number of Stages, A, B, C, Alpha, Beta:** Parameters for specific methods (e.g., RK, BDF, AM). For the Runge-Kutta method, the matrix A is provided by rows, and the vectors B and C are listed as single-line entries. The A matrix must be lower triangular for explicit methods.
 
 #### Note on Parsing:
@@ -144,14 +144,14 @@ This format ensures all keys are present, even if no values are provided. If a v
 ---
 
 <!-- ### Parsing Initial Conditions
-The initial condition matrix assumes that each row contains the values of $y_1, ..., y_n$ at a given time.
+The initial condition matrix assumes that each row contains the values of \f$y_1, ..., y_n\f$ at a given time.
 
 #### Example Initial Conditions
 For the system:
-$$
+\f]
 \frac{dy_1}{dt} = t + y_2\\
 \frac{dy_2}{dt} = \sin(t) - y_1
-$$
+\f[
 
 Initial conditions might look like:
 ```
@@ -159,21 +159,22 @@ Initial Condition: 1 0
 1 -0.1
 1 -0.19
 ```
-Each row represents the values of $y_1$ and $y_2$ at successive time steps.
+Each row represents the values of \f$y_1\f$ and \f$y_2\f$ at successive time steps.
 
 --- -->
 
 ### Notes on Function Matrix
-The first entry of each row in the function matrix refers to the time variable ($t$). Ensure that $t$ is appropriately included as the first parameter in all equations.
+The first entry of each row in the function matrix refers to the time variable (\f$t\f$). Ensure that \f$t\f$ is appropriately included as the first parameter in all equations.
 
 ---
 
 ### Example Input File
 Here is an example input file for the system:
-$$
+\f[
 \frac{dy_1}{dt} = t + y_2\\
+
 \frac{dy_2}{dt} = \sin(t) - y_1
-$$
+\f]
 
 ```
 Number of equations: 2
@@ -198,7 +199,7 @@ Beta: NA
 ```
 
 ## Tests
-As said above we provide several tests for our methods, in particular we test all the implemented methods both with a scalar and a vectorial ODE, by comparing each method's output with the approximations of a third-party solver with a tolerance of $10^{-4}$.
+As said above we provide several tests for our methods, in particular we test all the implemented methods both with a scalar and a vectorial ODE, by comparing each method's output with the approximations of a third-party solver with a tolerance of \f$10^{-4}\f$.
 
 ### Note on methods with no specific implemenation
 For the methods with no specified version to implement, we tested the following ones:
@@ -208,46 +209,46 @@ For the methods with no specified version to implement, we tested the following 
 
 ### 1. Scalar Test
 We consider the ODE:
-$$
+\f[
 \frac{dy}{dt} = e^{-t} + cos(y)\\
-$$
+\f]
 where we set:
 - Initial Time: 0.0
 - Final Time: 2.0
 - Step Size: 0.1
 #### Initial Conditions
-- For 1 step method we use $y(0) = 0.0$ as inital condition.
-- For 2 step methods we use $y(0) = 0.0, y(0.1) = 0.2$ as initial condition.
-- For 3 step methods we use $y(0) = 0.0, y(0.1) = 0.2, y(0.2)=0.3884$ as initial condition.
-- For 4 step methods we use $y(0) = 0.0, y(0.1) = 0.2, y(0.2)=0.3884, y(0.3)=0.5629$ as initial condition.
+- For 1 step method we use \f$y(0) = 0.0\f$ as inital condition.
+- For 2 step methods we use \f$y(0) = 0.0, y(0.1) = 0.2\f$ as initial condition.
+- For 3 step methods we use \f$y(0) = 0.0, y(0.1) = 0.2, y(0.2)=0.3884\f$ as initial condition.
+- For 4 step methods we use \f$y(0) = 0.0, y(0.1) = 0.2, y(0.2)=0.3884, y(0.3)=0.5629\f$ as initial condition.
 
 ### 2. Vectorial Test
 We consider the ODE:
-$$
+\f[
 \frac{dy_1}{dt} = t + y_2\\
 \frac{dy_2}{dt} = \sin(t) - y_1
-$$
+\f]
 where we set:
 - Initial Time: 0.0
 - Final Time: 1.0
 - Step Size: 0.1
 #### Initial Conditions
--  For 1 step method we set $\vec{y}(0) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix} $
+-  For 1 step method we set \f$\vec{y}(0) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix} \f$
 
 
--  For 2 step method we set $\vec{y}(0) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix}  $ and 
-$\vec{y}(0.1) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ -0.1 \\  \end{bmatrix}  $
+-  For 2 step method we set \f$\vec{y}(0) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix}  \f$ and 
+\f$\vec{y}(0.1) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ -0.1 \\  \end{bmatrix}  \f$
 
 
--  For 3 step method we set $\vec{y}(0) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix}  $ and 
-$\vec{y}(0.1) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ -0.1 \\  \end{bmatrix}  $ and 
- $\vec{y}(0.2) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ -0.19 \\  \end{bmatrix}  $
+-  For 3 step method we set \f$\vec{y}(0) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix}  \f$ and 
+\f$\vec{y}(0.1) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ -0.1 \\  \end{bmatrix}  \f$ and 
+ \f$\vec{y}(0.2) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ -0.19 \\  \end{bmatrix}  \f$
 
 
--  For 4 step method we set $\vec{y}(0) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix}  $ and 
-$\vec{y}(0.1) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ -0.1 \\  \end{bmatrix}  $ and 
- $\vec{y}(0.2) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ -0.19 \\  \end{bmatrix}  $ and 
- $\vec{y}(0.3) $ = $\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} $ = $\begin{bmatrix}  1.0\\ -0.27 \\  \end{bmatrix}  $
+-  For 4 step method we set \f$\vec{y}(0) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix}  \f$ and 
+\f$\vec{y}(0.1) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ -0.1 \\  \end{bmatrix}  \f$ and 
+ \f$\vec{y}(0.2) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ -0.19 \\  \end{bmatrix}  \f$ and 
+ \f$\vec{y}(0.3) \f$ = \f$\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \f$ = \f$\begin{bmatrix}  1.0\\ -0.27 \\  \end{bmatrix}  \f$
 
 ### Modify Test Systems Parameters
 
@@ -288,7 +289,7 @@ $ y_{n+1} = y_n + h \sum_{i=1}^{s} b_i k_i $
 
 $ k_i = f\left(t_n + c_i h, y_n + h \sum_{j=1}^{i-1} a_{ij} k_j\right), \quad i = 1, \dots, s $
 
-$$
+\f[
 \begin{array}{c|cccc}
 c_1 & 0      & 0      & 0      & \cdots \\
 c_2 & a_{21} & 0      & 0      & \cdots \\
@@ -298,7 +299,7 @@ c_s & a_{s1} & a_{s2} & a_{s3} & \cdots \\
 \hline
     & b_1    & b_2    & b_3    & \cdots & b_s
 \end{array}
-$$
+\f]
 
 Forward Euler Method: 
 
