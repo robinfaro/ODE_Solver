@@ -145,6 +145,7 @@ This format ensures all keys are present, even if no values are provided. If a v
 - Each input parameter begins with a **key** (e.g., `Number of equations:`, `Function combination:`).
 - The system will continue parsing subsequent lines as part of the current parameter until another key is encountered.
 - This format allows multi-line entries for parameters such as `Function combination`, `Derivative combination`, `Initial Condition`, and matrix `A`.
+- Input matrices and vectors can contain numerical values in either decimal floating-point format or fractional representation.
 
 ---
 
@@ -280,9 +281,10 @@ We also provide an empty skeleton file, **`empty_input_file.txt`**, where you ca
 ## TODOs and future works
 
 1. **Extend RK Methods:** Add support for implicit Runge-Kutta methods.
-2. **Advanced Function Combinations:** Allow more complex combinations, including the multiplication of different variables.
-3. **Plotting for Scalar Equations:** Provide functions to visualize scalar solutions.
-4. **Stability Checks:** Implement stability checks for explicit methods to prevent non-converging approximations.
+2. **Advanced Function Combinations:** Allow more advanced functions, complex combinations, function of functions and the multiplication between different variables. 
+3. **Parsing fraction as multiplier and parameters for the input function:** Enable the interpretation of fractions as multipliers and as parameters for input functions.
+4. **Plotting for Scalar Equations:** Provide functions to visualize scalar solutions.
+5. **Stability Checks:** Implement stability checks for explicit methods to prevent non-converging approximations.
 
 
 
