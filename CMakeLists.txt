@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.5.0)
 project(ODE_Solver VERSION 0.1.0 LANGUAGES C CXX)
 
+# Require C++14 for eigen support
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # Include Eigen directory
 include_directories(eigen)
 
