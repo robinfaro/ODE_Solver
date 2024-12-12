@@ -1,5 +1,10 @@
 # ODE Solver
 
+## Optimized Render of the Equations
+
+This file contains equations that are designed to be displayed on the main page of the Doxygen documentation, accessible through the `index.html` file in the documentation folder. To ensure proper rendering, the equations are formatted using LaTeX syntax. Make sure that the documentation environment supports MathJax or a similar LaTeX rendering tool for the best visual presentation.
+
+
 ## Setup Instructions
 
 Follow these steps to set up and run the project:
