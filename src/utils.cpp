@@ -235,7 +235,5 @@ InputParameters ParseInputFile(const std::string& filename) {
         params.beta = Eigen::Map<Eigen::VectorXd>(vector.data(), vector.size());
     }
 
-    std::cout << "Parsed input parameters:" << std::endl;
-
     return params;
 }
