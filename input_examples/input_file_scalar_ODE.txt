@@ -1,0 +1,16 @@
+Number of equations: 1
+Function combination: +1_3_-1 1_2_1
+Derivative combination: -1_1_1
+Method: 3
+Initial Time: 0.0 
+Final Time: 2.0
+Step Size: 0.1
+Number of Steps: 2
+Initial Condition: 0.0
+0.2
+Number of Stages: 1
+A: NA
+B: NA
+C: NA
+Alpha: NA
+Beta: NA
