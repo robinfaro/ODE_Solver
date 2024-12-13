@@ -1,26 +1,9 @@
 var searchData=
 [
-  ['scalar_20test_0',['1. Scalar Test',['../index.html#autotoc_md22',1,'']]],
-  ['set_20up_20cmake_20compilation_1',['3. Set Up CMake Compilation',['../index.html#autotoc_md5',1,'']]],
-  ['seta_2',['SetA',['../class_runge_kutta.html#a3026a8a054168ea6a2641521af343be1',1,'RungeKutta']]],
-  ['setalpha_3',['SetAlpha',['../class_multi_step.html#aad611498019f88a1070f0c58281938aa',1,'MultiStep']]],
-  ['setb_4',['SetB',['../class_runge_kutta.html#a20607a876b75bb830cabeab7b47f34ae',1,'RungeKutta']]],
-  ['setbeta_5',['SetBeta',['../class_multi_step.html#a597df3dee5e7b1d6fb61e667b2d4a730',1,'MultiStep']]],
-  ['setc_6',['SetC',['../class_runge_kutta.html#a96aa2495d3a8e1a59980dcb848de76d9',1,'RungeKutta']]],
-  ['setderivativecombination_7',['SetDerivativeCombination',['../class_function.html#ab356460cf2ae8ca887f55380c04c3b3d',1,'Function']]],
-  ['setfunction_8',['SetFunction',['../class_newton_method.html#ab4de3a383835c77284934fe029d4bc43',1,'NewtonMethod::SetFunction()'],['../class_ode_solver.html#a3ac0a29a3078d33a0fd23221f35949fc',1,'OdeSolver::SetFunction()']]],
-  ['setfunctioncombination_9',['SetFunctionCombination',['../class_function.html#a58ca8e88b2256c27f4d511b7727bd2d2',1,'Function']]],
-  ['setinitialcondition_10',['SetInitialCondition',['../class_ode_solver.html#a76aff221da8bb3fc802f246683426ce1',1,'OdeSolver']]],
-  ['setinitialguess_11',['SetInitialGuess',['../class_newton_method.html#a0f6da607785a530ec79fcbb32c499967',1,'NewtonMethod']]],
-  ['setstepsize_12',['SetStepSize',['../class_ode_solver.html#a9f027f077edf060842c4e18ad8aae098',1,'OdeSolver']]],
-  ['settimeinterval_13',['SetTimeInterval',['../class_ode_solver.html#a99d18cfef7f5c4ea4c8827260632fbb3',1,'OdeSolver']]],
-  ['setup_20instructions_14',['Setup Instructions',['../index.html#autotoc_md2',1,'']]],
-  ['skeleton_20for_20new_20configurations_3a_15',['Empty Skeleton for New Configurations:',['../index.html#autotoc_md28',1,'']]],
-  ['solve_16',['Solve',['../class_adam_bashforth.html#a3c2dccf2108c690da560969f8452c6ac',1,'AdamBashforth::Solve()'],['../class_adam_moulton.html#a2466ab1f0cd2681d06cc2731abc14b67',1,'AdamMoulton::Solve()'],['../class_b_d_f.html#aa531086ff9cf122756b24b353de3d016',1,'BDF::Solve()'],['../class_newton_method.html#a84d04600a8f943e23c2f1492328893f0',1,'NewtonMethod::Solve()'],['../class_ode_solver.html#ad4fff89be77c21351e6c4fcdd1535768',1,'OdeSolver::Solve()'],['../class_runge_kutta.html#a0f9c69d66da09c784cedb2ce9e136da2',1,'RungeKutta::Solve()']]],
-  ['solver_17',['ODE Solver',['../index.html',1,'']]],
-  ['specific_20implemenation_18',['Note on methods with no specific implemenation',['../index.html#autotoc_md21',1,'']]],
-  ['step_5fsize_19',['step_size',['../class_ode_solver.html#a8afbf2c8f1b44bb8be823e58492d5355',1,'OdeSolver::step_size'],['../struct_input_parameters.html#a8d1054ff80f860596ce5b877ae330004',1,'InputParameters::step_size']]],
-  ['submodules_20',['2. Populate Submodules',['../index.html#autotoc_md4',1,'']]],
-  ['system_21',['Example System',['../index.html#autotoc_md9',1,'']]],
-  ['systems_20parameters_22',['Modify Test Systems Parameters',['../index.html#autotoc_md26',1,'']]]
+  ['render_20of_20the_20equations_0',['Optimized Render of the Equations',['../index.html#autotoc_md1',1,'']]],
+  ['repository_1',['1. Clone the Repository',['../index.html#autotoc_md3',1,'']]],
+  ['run_20tests_2',['4. Run Tests',['../index.html#autotoc_md6',1,'']]],
+  ['run_20the_20program_3',['5. Run the Program',['../index.html#autotoc_md7',1,'']]],
+  ['rungekutta_4',['RungeKutta',['../class_runge_kutta.html',1,'RungeKutta'],['../class_runge_kutta.html#a09ef3591c65e0eff6494a40f9c41cef7',1,'RungeKutta::RungeKutta()'],['../class_runge_kutta.html#a843e0a34bff5f8dea43a988c3b12720d',1,'RungeKutta::RungeKutta(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::MatrixXd a, Eigen::VectorXd b, Eigen::VectorXd c)'],['../class_runge_kutta.html#a6f0ac05addfeca8c8d65d742ddc26d53',1,'RungeKutta::RungeKutta(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function)']]],
+  ['rungekutta_2eh_5',['RungeKutta.h',['../_runge_kutta_8h.html',1,'']]]
 ];

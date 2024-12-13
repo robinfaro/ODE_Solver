@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['ode_20solver_0',['ODE Solver',['../index.html',1,'']]],
-  ['odesolver_1',['OdeSolver',['../class_ode_solver.html',1,'OdeSolver'],['../class_ode_solver.html#ac05bcded79f226c8ea4cb245bf513bfb',1,'OdeSolver::OdeSolver()'],['../class_ode_solver.html#a7c8f3b6d72d0ce6a77c48ff3ce35916a',1,'OdeSolver::OdeSolver(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function)']]],
-  ['odesolver_2eh_2',['OdeSolver.h',['../_ode_solver_8h.html',1,'']]],
-  ['of_20entries_3a_3',['Explanation of Entries:',['../index.html#autotoc_md16',1,'']]],
-  ['of_20the_20equations_4',['Optimized Render of the Equations',['../index.html#autotoc_md1',1,'']]],
-  ['on_20methods_20with_20no_20specific_20implemenation_5',['Note on methods with no specific implemenation',['../index.html#autotoc_md21',1,'']]],
-  ['on_20parsing_3a_6',['Note on Parsing:',['../index.html#autotoc_md17',1,'']]],
-  ['optimized_20render_20of_20the_20equations_7',['Optimized Render of the Equations',['../index.html#autotoc_md1',1,'']]]
+  ['new_20configurations_3a_0',['Empty Skeleton for New Configurations:',['../index.html#autotoc_md30',1,'']]],
+  ['newtonmethod_1',['NewtonMethod',['../class_newton_method.html',1,'NewtonMethod'],['../class_newton_method.html#a54d237e4630631aad2845d079e9de44a',1,'NewtonMethod::NewtonMethod()'],['../class_newton_method.html#aec1e394829c9e2e06b56ac840e35d4da',1,'NewtonMethod::NewtonMethod(Function function, Eigen::VectorXd y0, double t)'],['../class_newton_method.html#a0e569499095299962d6813d5ebb03624',1,'NewtonMethod::NewtonMethod(Function function, Eigen::VectorXd y0, double t, double beta, Eigen::VectorXd constant_term, double step_size)'],['../class_newton_method.html#a711af157c4b7323297db12da823d746d',1,'NewtonMethod::NewtonMethod(Function function, Eigen::VectorXd y0, double t, double alpha, double step_size)']]],
+  ['newtonmethod_2eh_2',['NewtonMethod.h',['../_newton_method_8h.html',1,'']]],
+  ['no_20specific_20implemenation_3',['Note on methods with no specific implemenation',['../index.html#autotoc_md23',1,'']]],
+  ['note_20on_20methods_20with_20no_20specific_20implemenation_4',['Note on methods with no specific implemenation',['../index.html#autotoc_md23',1,'']]],
+  ['note_20on_20parsing_3a_5',['Note on Parsing:',['../index.html#autotoc_md17',1,'']]],
+  ['notes_20on_20function_20matrix_6',['Notes on Function Matrix',['../index.html#autotoc_md19',1,'']]],
+  ['num_5fequations_7',['num_equations',['../struct_input_parameters.html#a6436616e4d4af992861d383eb8497026',1,'InputParameters']]],
+  ['num_5fstage_8',['num_stage',['../struct_input_parameters.html#abc66a02d1005afc263d7ea3fecf46f8e',1,'InputParameters']]],
+  ['num_5fsteps_9',['num_steps',['../struct_input_parameters.html#a5acac78f4c57e2e65a000fbcff96aec8',1,'InputParameters']]]
 ];

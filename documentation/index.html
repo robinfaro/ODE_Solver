@@ -143,31 +143,31 @@ f_i(y_1, ..., y_n, t) = m_t \text{f}_t(t) + m_j \text{f}_j(y_1) +  \ldots + m_k\
 Available Basic Functions</h2>
 <p>The following basic mathematical functions can be used to construct the system:</p>
 <ol type="1">
-<li><b>Sine <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a>:</b> <p class="formulaDsp">
+<li><b>Sine function:</b> <p class="formulaDsp">
 \[ \text{f1}(x, \text{param}) = \sin(\text{param} \cdot x) \]
 </p>
 </li>
-<li><b>Cosine <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a>:</b> <p class="formulaDsp">
+<li><b>Cosine function:</b> <p class="formulaDsp">
 \[ \text{f2}(x, \text{param}) = \cos(\text{param} \cdot x) \]
 </p>
 </li>
-<li><b>Exponential <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a>:</b> <p class="formulaDsp">
+<li><b>Exponential function:</b> <p class="formulaDsp">
 \[ \text{f3}(x, \text{param}) = e^{\text{param} \cdot x} \]
 </p>
 </li>
-<li><b>Power <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a>:</b> <p class="formulaDsp">
+<li><b>Power function:</b> <p class="formulaDsp">
 \[ \text{f4}(x, \text{param}) = x^{\text{param}} \]
 </p>
 </li>
-<li><b>Logarithmic <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a>:</b> <p class="formulaDsp">
+<li><b>Logarithmic function:</b> <p class="formulaDsp">
 \[ \text{f5}(x, \text{param}) = \log(\text{param} \cdot x) \]
 </p>
 </li>
-<li><b>Identity <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a>:</b> <p class="formulaDsp">
+<li><b>Identity function:</b> <p class="formulaDsp">
 \[ \text{f6}(x, \text{param}) = \text{param} \cdot x \]
 </p>
 </li>
-<li><b>Constant <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a>:</b> <p class="formulaDsp">
+<li><b>Constant function:</b> <p class="formulaDsp">
 \[ \text{f7}(x, \text{param}) = \text{param} \]
 </p>
 </li>
@@ -178,16 +178,16 @@ Available Basic Functions</h2>
 Available Methods</h2>
 <p>The available numerical methods and their corresponding method numbers are as follows:</p>
 <ol type="1">
-<li><b>Forward Euler (FE):</b> No additional parameters needed.</li>
-<li><b>Adam-Bashforth One-Step (AB1):</b> No additional parameters needed.</li>
-<li><b>Adam-Bashforth Two-Steps (AB2):</b> No additional parameters needed.</li>
-<li><b>Adam-Bashforth Three-Steps (AB3):</b> No additional parameters needed.</li>
-<li><b>Adam-Bashforth Four-Steps (AB4):</b> No additional parameters needed.</li>
-<li><b>Backward Euler (BE):</b> Requires the Jacobian of the system to be provided.</li>
-<li><b>Runge-Kutta Explicit (RK):</b> Requires matrix A, vector b, and vector c. Matrix A must be lower triangular.</li>
+<li><b>Forward Euler (<a class="el" href="class_forward_euler.html" title="A class for solving ordinary differential equations (ODEs) using the Forward Euler method.">ForwardEuler</a>):</b> No additional parameters needed.</li>
+<li><b>Adam-Bashforth One-Step (<a class="el" href="class_adam_bashforth_one_step.html" title="A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth one-step method.">AdamBashforthOneStep</a>):</b> No additional parameters needed.</li>
+<li><b>Adam-Bashforth Two-Steps (<a class="el" href="class_adam_bashforth_two_steps.html" title="A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth two-step method.">AdamBashforthTwoSteps</a>):</b> No additional parameters needed.</li>
+<li><b>Adam-Bashforth Three-Steps (<a class="el" href="class_adam_bashforth_three_steps.html" title="A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth three-step metho...">AdamBashforthThreeSteps</a>):</b> No additional parameters needed.</li>
+<li><b>Adam-Bashforth Four-Steps (<a class="el" href="class_adam_bashforth_four_steps.html" title="A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth four-step method...">AdamBashforthFourSteps</a>):</b> No additional parameters needed.</li>
+<li><b>Backward Euler (<a class="el" href="class_backward_euler.html" title="A class for solving ordinary differential equations (ODEs) using the Backward Euler method.">BackwardEuler</a>):</b> Requires the Jacobian of the system to be provided.</li>
+<li><b>Runge-Kutta Explicit (<a class="el" href="class_runge_kutta.html" title="A class for solving ordinary differential equations (ODEs) using the Runge-Kutta method.">RungeKutta</a>):</b> Requires matrix A, vector b, and vector c. Matrix A must be lower triangular.</li>
 <li><b>Backward Differentiation Formula (<a class="el" href="class_b_d_f.html" title="A class for solving ordinary differential equations (ODEs) using the Backward Differentiation Formula...">BDF</a>):</b> Requires the Jacobian of the system and vector alpha.</li>
-<li><b>Adam-Moulton (AM):</b> Requires the Jacobian of the system and vector beta.</li>
-<li><b>Adam-Bashforth (AB):</b> Requires vector beta.</li>
+<li><b>Adam-Moulton (<a class="el" href="class_adam_moulton.html" title="A class for solving ordinary differential equations (ODEs) using the Adams-Moulton method.">AdamMoulton</a>):</b> Requires the Jacobian of the system and vector beta.</li>
+<li><b>Adam-Bashforth (<a class="el" href="class_adam_bashforth.html" title="A class for solving ordinary differential equations (ODEs) using the Adams-Bashforth method.">AdamBashforth</a>):</b> Requires vector beta.</li>
 </ol>
 <hr  />
 <h2><a class="anchor" id="autotoc_md15"></a>
@@ -212,28 +212,33 @@ Input File Format</h2>
 <h3><a class="anchor" id="autotoc_md16"></a>
 Explanation of Entries:</h3>
 <ul>
-<li><b>Number of equations:</b> Number of ODEs in the system.</li>
-<li><b><a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a> combination:</b> Defines the function matrix for \(f_i(t, y_1, ..., y_n)\). Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable or the time variable ( \(t\)) in that equation. Entries follow the format <code>multiplier_functionNumber_parameter</code> or <code>0</code> if the corresponding variable ( \(t\) or \(y_i\)) does not contribute to that row.</li>
-<li><b>Derivative combination:</b> Defines the Jacobian matrix (if needed). Each row corresponds to one equation in the system, and entries follow the same format as the function combination.</li>
-<li><b>Method:</b> Specifies the numerical method to use (see the method list above).</li>
-<li><b>Initial Time:</b> The starting time for the simulation.</li>
-<li><b>Final Time:</b> The ending time for the simulation.</li>
-<li><b>Step Size:</b> The time step for the simulation.</li>
-<li><b>Number of Steps:</b> Number of time steps to calculate.</li>
-<li><b>Initial Condition:</b> Each row represents the values of \(y_1, ..., y_n\) at a given time step. For example, if there are three initial conditions provided, the user will pass three rows, each containing the values for all variables in the system.</li>
-<li><b>Number of Stages, A, B, C, Alpha, Beta:</b> Parameters for specific methods (e.g., RK, <a class="el" href="class_b_d_f.html" title="A class for solving ordinary differential equations (ODEs) using the Backward Differentiation Formula...">BDF</a>, AM). For the Runge-Kutta method, the matrix A is provided by rows, and the vectors B and C are listed as single-line entries. The A matrix must be lower triangular for explicit methods.</li>
+<li>\(\textbf{Number of equations}\): Number of ODEs in the system.</li>
+<li>\(\textbf{Function combination}\): Defines the function matrix for \(f(t, y_1, ..., y_n)\). Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable ( \(y_i\)) or the time variable ( \(t\)) in that equation. Entries follow the format <code>multiplier_functionNumber_parameter</code> or <code>0</code> if the corresponding variable ( \(t\) or \(y_i\)) does not contribute to that row. The value of functionNumber has to follow the list of available mathematical functions above. Multiplier and parameter are two signed floating point values.</li>
+<li>\(\textbf{Derivative combination}\): Defines the Jacobian matrix (if needed). Each row corresponds to one equation in the system and entries follow the same format as the function combination.</li>
+<li>\(\textbf{Method}\): Specifies the numerical method to use (see the method list above).</li>
+<li>\(\textbf{Initial Time}\): The starting time for the simulation.</li>
+<li>\(\textbf{Final Time}\) The ending time for the simulation.</li>
+<li>\(\textbf{Step Size}\): The time step for the simulation.</li>
+<li>\(\textbf{Number of Steps}\) Number of steps of the method.</li>
+<li>\(\textbf{Initial Condition}\): Each row represents the values of \(y_1, ..., y_n\) at a given time step. For example, if there are three initial conditions provided, the user will pass three rows, each containing the values for all variables in the system.</li>
+<li>\(\textbf{Number of Stages, A, B, C, Alpha and Beta}\): Parameters for specific methods (e.g. RK and AM). For the Runge-Kutta method, the matrix A is provided by rows and the vectors B and C are listed as single-line entries. The A matrix must be lower triangular for explicit methods.</li>
 </ul>
 <h3><a class="anchor" id="autotoc_md17"></a>
 Note on Parsing:</h3>
 <ul>
-<li>Each input parameter begins with a <b>key</b> (e.g., <code>Number of equations:</code>, <code><a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a> combination:</code>).</li>
+<li>Each input parameter begins with a <b>key</b> (e.g., <code>Number of equations:</code>, <code>Derivative combination:</code>).</li>
 <li>The system will continue parsing subsequent lines as part of the current parameter until another key is encountered.</li>
-<li>This format allows multi-line entries for parameters such as <code><a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a> combination</code>, <code>Derivative combination</code>, <code>Initial Condition</code>, and matrix <code>A</code>.</li>
+<li>This format allows multi-line entries for parameters such as <code>Function/Derivative combination</code>, <code>Initial Condition</code>, and matrix <code>A</code>.</li>
+<li>Input matrices and vectors can contain numerical values in either decimal floating-point format or fractional representation.</li>
 </ul>
 <hr  />
-<p>### Notes on <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a> Matrix The first entry of each row in the function matrix refers to the time variable ( \(t\)). Ensure that \(t\) is appropriately included as the first parameter in all equations.</p>
-<p>---</p>
-<p>### Example Input File Here is an example input file for the system:     </p><p class="formulaDsp">
+<h2><a class="anchor" id="autotoc_md19"></a>
+Notes on Function Matrix</h2>
+<p>The first entry of each row in the function matrix refers to the time variable ( \(t\)). Ensure that \(t\) is appropriately included as the first parameter in all equations.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md21"></a>
+Example Input File</h2>
+<p>Here is an example input file for the system:     </p><p class="formulaDsp">
 \[
 \frac{dy_1}{dt} = t + y_2\\
 
@@ -259,17 +264,17 @@ Note on Parsing:</h3>
 <div class="line">C: NA</div>
 <div class="line">Alpha: NA</div>
 <div class="line">Beta: NA</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md22"></a>
 Tests</h1>
 <p>As said above we provide several tests for our methods, in particular we test all the implemented methods both with a scalar and a vectorial ODE, by comparing each method's output with the approximations of a third-party solver with a tolerance of \(10^{-4}\).</p>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 Note on methods with no specific implemenation</h2>
 <p>For the methods with no specified version to implement, we tested the following ones:</p><ul>
 <li>RK4 for Runge Kutta family.</li>
 <li>AM3 for Adam Moulton family.</li>
 <li>BDF1 for Backward Differentiation Formula family.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 1. Scalar Test</h2>
 <p>We consider the ODE:   </p><p class="formulaDsp">
 \[
@@ -281,7 +286,7 @@ Note on methods with no specific implemenation</h2>
 <li>Final Time: 2.0</li>
 <li>Step Size: 0.1 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md23"></a>
+<h3><a class="anchor" id="autotoc_md25"></a>
 Initial Conditions</h3>
 <ul>
 <li>For 1 step method we use \(y(0) = 0.0\) as inital condition.</li>
@@ -289,7 +294,7 @@ Initial Conditions</h3>
 <li>For 3 step methods we use \(y(0) = 0.0, y(0.1) = 0.2, y(0.2)=0.3884\) as initial condition.</li>
 <li>For 4 step methods we use \(y(0) = 0.0, y(0.1) = 0.2, y(0.2)=0.3884, y(0.3)=0.5629\) as initial condition.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 2. Vectorial Test</h2>
 <p>We consider the ODE:    </p><p class="formulaDsp">
 \[
@@ -302,7 +307,7 @@ Initial Conditions</h3>
 <li>Final Time: 1.0</li>
 <li>Step Size: 0.1 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md25"></a>
+<h3><a class="anchor" id="autotoc_md27"></a>
 Initial Conditions</h3>
 <ul>
 <li>For 1 step method we set \(\vec{y}(0) \) = \(\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \) = \(\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix} \)</li>
@@ -310,10 +315,10 @@ Initial Conditions</h3>
 <li>For 3 step method we set \(\vec{y}(0) \) = \(\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \) = \(\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix}  \) and \(\vec{y}(0.1) \) = \(\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \) = \(\begin{bmatrix}  1.0\\ -0.1 \\  \end{bmatrix}  \) and \(\vec{y}(0.2) \) = \(\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \) = \(\begin{bmatrix}  1.0\\ -0.19 \\  \end{bmatrix}  \)</li>
 <li>For 4 step method we set \(\vec{y}(0) \) = \(\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \) = \(\begin{bmatrix}  1.0\\ 0.0 \\  \end{bmatrix}  \) and \(\vec{y}(0.1) \) = \(\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \) = \(\begin{bmatrix}  1.0\\ -0.1 \\  \end{bmatrix}  \) and \(\vec{y}(0.2) \) = \(\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \) = \(\begin{bmatrix}  1.0\\ -0.19 \\  \end{bmatrix}  \) and \(\vec{y}(0.3) \) = \(\begin{bmatrix}  y_1\\ y_2 \\  \end{bmatrix} \) = \(\begin{bmatrix}  1.0\\ -0.27 \\  \end{bmatrix}  \)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Modify Test Systems Parameters</h2>
 <p>To customize the parameters of the test systems, you can use the input files provided in the <code>input_examples</code> folder. This folder contains example configurations for both scalar and vector ODE systems. You can edit these files to change parameters or specify different numerical methods.</p>
-<h3><a class="anchor" id="autotoc_md27"></a>
+<h3><a class="anchor" id="autotoc_md29"></a>
 Example Input Files:</h3>
 <ol type="1">
 <li><b><code>input_file_vector_ODE.txt</code></b> <br  />
@@ -332,16 +337,38 @@ Example Input Files:</h3>
 </li>
 </ol>
 <p>Simply open the relevant input file, edit the parameters as needed, and pass the file to the program as an argument: </p><div class="fragment"><div class="line">./ODE_Solver &lt;input_file&gt;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md28"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md30"></a>
 Empty Skeleton for New Configurations:</h3>
 <p>We also provide an empty skeleton file, <b><code>empty_input_file.txt</code></b>, where you can define your own parameters for a completely custom setup.</p>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md31"></a>
+Coding Convention</h1>
+<p>We follow the <b>Google C++ Style Guide</b> coding convenction for our project. You can find the full guidelines <a href="https://google.github.io/styleguide/cppguide.html">here</a>.</p>
+<h2><a class="anchor" id="autotoc_md32"></a>
+Key Conventions Used:</h2>
+<ol type="1">
+<li><b>Variable naming:</b><ul>
+<li>Variables are written in lowercase, with words separated by underscores.</li>
+<li>Example: <code>variable_name</code>, <code>matrix_size</code>.</li>
+</ul>
+</li>
+<li><b>Class and function naming:</b><ul>
+<li>Classes and functions start with an uppercase letter, with subsequent words also capitalized (CamelCase).</li>
+<li>Example: <code>ClassName</code>, <code>FunctionName</code>.</li>
+</ul>
+</li>
+<li><b>Consistency with Google Style Guide:</b><ul>
+<li>The overall structure, indentation, and formatting of the code align with the Google Style Guide recommendations.</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md33"></a>
 TODOs and future works</h1>
 <ol type="1">
-<li><b>Extend RK Methods:</b> Add support for implicit Runge-Kutta methods.</li>
-<li><b>Advanced <a class="el" href="class_function.html" title="A class for representing and evaluating mathematical functions and their derivatives.">Function</a> Combinations:</b> Allow more complex combinations, including the multiplication of different variables.</li>
-<li><b>Plotting for Scalar Equations:</b> Provide functions to visualize scalar solutions.</li>
-<li><b>Stability Checks:</b> Implement stability checks for explicit methods to prevent non-converging approximations.</li>
+<li><b>Extend RK methods:</b> Add support for implicit Runge-Kutta methods.</li>
+<li><b>Advanced function combinations:</b> Allow more advanced functions, complex combinations, function of functions and the multiplication between different variables.</li>
+<li><b>Parsing fraction as multiplier and parameters for the input function:</b> Enable the interpretation of fractions as multipliers and as parameters for input functions.</li>
+<li><b>Plotting for scalar equations:</b> Provide functions to visualize scalar solutions.</li>
+<li><b>Stability checks:</b> Implement stability checks for explicit methods to prevent non-converging approximations.</li>
 </ol>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>

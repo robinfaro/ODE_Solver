@@ -14,7 +14,7 @@ var searchData=
   ['adammoulton_11',['AdamMoulton',['../class_adam_moulton.html',1,'AdamMoulton'],['../class_adam_moulton.html#a7d4c81f2c06b0ae224df48192007cc3d',1,'AdamMoulton::AdamMoulton()'],['../class_adam_moulton.html#aeb11a5b4020e250e950c80ca855da59b',1,'AdamMoulton::AdamMoulton(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::VectorXd beta)'],['../class_adam_moulton.html#af6fcfdf6bd385fd5e3ab8de386728a3f',1,'AdamMoulton::AdamMoulton(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function)']]],
   ['adammoulton_2eh_12',['AdamMoulton.h',['../_adam_moulton_8h.html',1,'']]],
   ['alpha_13',['alpha',['../class_multi_step.html#a32225de441d2dbcbb4414ba4d1e72645',1,'MultiStep::alpha'],['../struct_input_parameters.html#a16070327bdab3ea1ceaf4154cfe0dbb9',1,'InputParameters::alpha']]],
-  ['and_20future_20works_14',['TODOs and future works',['../index.html#autotoc_md29',1,'']]],
+  ['and_20future_20works_14',['TODOs and future works',['../index.html#autotoc_md33',1,'']]],
   ['applyfunction_15',['ApplyFunction',['../class_function.html#a4893d9f55a07a4987594211801aaa38a',1,'Function']]],
   ['available_20basic_20functions_16',['Available Basic Functions',['../index.html#autotoc_md11',1,'']]],
   ['available_20methods_17',['Available Methods',['../index.html#autotoc_md13',1,'']]]

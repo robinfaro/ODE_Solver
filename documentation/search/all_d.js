@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['new_20configurations_3a_0',['Empty Skeleton for New Configurations:',['../index.html#autotoc_md28',1,'']]],
-  ['newtonmethod_1',['NewtonMethod',['../class_newton_method.html',1,'NewtonMethod'],['../class_newton_method.html#a54d237e4630631aad2845d079e9de44a',1,'NewtonMethod::NewtonMethod()'],['../class_newton_method.html#aec1e394829c9e2e06b56ac840e35d4da',1,'NewtonMethod::NewtonMethod(Function function, Eigen::VectorXd y0, double t)'],['../class_newton_method.html#a0e569499095299962d6813d5ebb03624',1,'NewtonMethod::NewtonMethod(Function function, Eigen::VectorXd y0, double t, double beta, Eigen::VectorXd constant_term, double step_size)'],['../class_newton_method.html#a711af157c4b7323297db12da823d746d',1,'NewtonMethod::NewtonMethod(Function function, Eigen::VectorXd y0, double t, double alpha, double step_size)']]],
-  ['newtonmethod_2eh_2',['NewtonMethod.h',['../_newton_method_8h.html',1,'']]],
-  ['no_20specific_20implemenation_3',['Note on methods with no specific implemenation',['../index.html#autotoc_md21',1,'']]],
-  ['note_20on_20methods_20with_20no_20specific_20implemenation_4',['Note on methods with no specific implemenation',['../index.html#autotoc_md21',1,'']]],
-  ['note_20on_20parsing_3a_5',['Note on Parsing:',['../index.html#autotoc_md17',1,'']]],
-  ['num_5fequations_6',['num_equations',['../struct_input_parameters.html#a6436616e4d4af992861d383eb8497026',1,'InputParameters']]],
-  ['num_5fstage_7',['num_stage',['../struct_input_parameters.html#abc66a02d1005afc263d7ea3fecf46f8e',1,'InputParameters']]],
-  ['num_5fsteps_8',['num_steps',['../struct_input_parameters.html#a5acac78f4c57e2e65a000fbcff96aec8',1,'InputParameters']]]
+  ['main_0',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
+  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['matrix_2',['Notes on Function Matrix',['../index.html#autotoc_md19',1,'']]],
+  ['method_3',['method',['../struct_input_parameters.html#a05ec3b7e067f8f3cc323c71b8081de76',1,'InputParameters']]],
+  ['methods_4',['Available Methods',['../index.html#autotoc_md13',1,'']]],
+  ['methods_20with_20no_20specific_20implemenation_5',['Note on methods with no specific implemenation',['../index.html#autotoc_md23',1,'']]],
+  ['modify_20test_20systems_20parameters_6',['Modify Test Systems Parameters',['../index.html#autotoc_md28',1,'']]],
+  ['multistep_7',['MultiStep',['../class_multi_step.html',1,'MultiStep'],['../class_multi_step.html#aa586a70cbc026a29fe3c93fb40dfe947',1,'MultiStep::MultiStep()'],['../class_multi_step.html#afc6b3b1415f73726b6905be3a48a2c8c',1,'MultiStep::MultiStep(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::VectorXd alpha, Eigen::VectorXd beta)'],['../class_multi_step.html#abe94e6233e3321401ebc17b24468b989',1,'MultiStep::MultiStep(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function, Eigen::VectorXd coefficent, CoeffType coeff_type)'],['../class_multi_step.html#a822ddfd5df48a2cec2f6b11a1e2e325c',1,'MultiStep::MultiStep(double step_size, double initial_time, double final_time, Eigen::MatrixXd initial_condition, Function function)']]],
+  ['multistep_2eh_8',['MultiStep.h',['../_multi_step_8h.html',1,'']]]
 ];
