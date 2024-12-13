@@ -65,25 +65,25 @@ f_i(y_1, ..., y_n, t) = m_t \text{f}_t(t) + m_j \text{f}_j(y_1) +  \ldots + m_k\
 ### Available Basic Functions
 The following basic mathematical functions can be used to construct the system:
 
-1. **Sine Function@@:**
+1. **Sine function:**
    \f[ \text{f1}(x, \text{param}) = \sin(\text{param} \cdot x) \f]
 
-2. **Cosine Function:**
+2. **Cosine function:**
    \f[ \text{f2}(x, \text{param}) = \cos(\text{param} \cdot x) \f]
 
-3. **Exponential Function:**
+3. **Exponential function:**
    \f[ \text{f3}(x, \text{param}) = e^{\text{param} \cdot x} \f]
 
-4. **Power Function:**
+4. **Power function:**
    \f[ \text{f4}(x, \text{param}) = x^{\text{param}} \f]
 
-5. **Logarithmic Function:**
+5. **Logarithmic function:**
    \f[ \text{f5}(x, \text{param}) = \log(\text{param} \cdot x) \f]
 
-6. **Identity Function:**
+6. **Identity function:**
    \f[ \text{f6}(x, \text{param}) = \text{param} \cdot x \f]
 
-7. **Constant Function:**
+7. **Constant function:**
    \f[ \text{f7}(x, \text{param}) = \text{param} \f]
 
 Each function is combined within the system equations using a multiplier and parameter, following the format specified in the input file.
@@ -93,16 +93,16 @@ Each function is combined within the system equations using a multiplier and par
 ### Available Methods
 The available numerical methods and their corresponding method numbers are as follows:
 
-1. **Forward Euler (FE):** No additional parameters needed.
-2. **Adam-Bashforth One-Step (AB1):** No additional parameters needed.
-3. **Adam-Bashforth Two-Steps (AB2):** No additional parameters needed.
-4. **Adam-Bashforth Three-Steps (AB3):** No additional parameters needed.
-5. **Adam-Bashforth Four-Steps (AB4):** No additional parameters needed.
-6. **Backward Euler (BE):** Requires the Jacobian of the system to be provided.
-7. **Runge-Kutta Explicit (RK):** Requires matrix A, vector b, and vector c. Matrix A must be lower triangular.
+1. **Forward Euler (ForwardEuler):** No additional parameters needed.
+2. **Adam-Bashforth One-Step (AdamBashforthOneStep):** No additional parameters needed.
+3. **Adam-Bashforth Two-Steps (AdamBashforthTwoSteps):** No additional parameters needed.
+4. **Adam-Bashforth Three-Steps (AdamBashforthThreeSteps):** No additional parameters needed.
+5. **Adam-Bashforth Four-Steps (AdamBashforthFourSteps):** No additional parameters needed.
+6. **Backward Euler (BackwardEuler):** Requires the Jacobian of the system to be provided.
+7. **Runge-Kutta Explicit (RungeKutta):** Requires matrix A, vector b, and vector c. Matrix A must be lower triangular.
 8. **Backward Differentiation Formula (BDF):** Requires the Jacobian of the system and vector alpha.
-9. **Adam-Moulton (AM):** Requires the Jacobian of the system and vector beta.
-10. **Adam-Bashforth (AB):** Requires vector beta.
+9. **Adam-Moulton (AdamMoulton):** Requires the Jacobian of the system and vector beta.
+10. **Adam-Bashforth (AdamBashforth):** Requires vector beta.
 
 ---
 
@@ -130,44 +130,24 @@ Beta: NA
 This format ensures all keys are present, even if no values are provided. If a value is not provided, use `NA` to signify it is not applicable.
 
 #### Explanation of Entries:
-- **Number of equations:** Number of ODEs in the system.
-- **Function combination:** Defines the function matrix for \f$f_i(t, y_1, ..., y_n)\f$. Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable or the time variable (\f$t\f$) in that equation. Entries follow the format `multiplier_functionNumber_parameter` or `0` if the corresponding variable (\f$t\f$ or \f$y_i\f$) does not contribute to that row. The value of functionNumber has to follow the list of available mathematical functions above.
-- **Derivative combination:** Defines the Jacobian matrix (if needed). Each row corresponds to one equation in the system and entries follow the same format as the function combination.
-- **Method:** Specifies the numerical method to use (see the method list above).
-- **Initial Time:** The starting time for the simulation.
-- **Final Time:** The ending time for the simulation.
-- **Step Size:** The time step for the simulation.
-- **Number of Steps:** Number of steps of the method.
-- **Initial Condition:** Each row represents the values of \f$y_1, ..., y_n\f$ at a given time step. For example, if there are three initial conditions provided, the user will pass three rows, each containing the values for all variables in the system.
-- **Number of Stages, A, B, C, Alpha, Beta:** Parameters for specific methods (e.g., RK, BDF, AM). For the Runge-Kutta method, the matrix A is provided by rows and the vectors B and C are listed as single-line entries. The A matrix must be lower triangular for explicit methods.
+- \f$\textbf{Number of equations}\f$: Number of ODEs in the system.
+- \f$\textbf{Function combination}\f$: Defines the function matrix for \f$f(t, y_1, ..., y_n)\f$. Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable (\f$y_i\f$) or the time variable (\f$t\f$) in that equation. Entries follow the format `multiplier_functionNumber_parameter` or `0` if the corresponding variable (\f$t\f$ or \f$y_i\f$) does not contribute to that row. The value of functionNumber has to follow the list of available mathematical functions above. Multiplier and parameter are two signed floating point values.
+- \f$\textbf{Derivative combination}\f$: Defines the Jacobian matrix (if needed). Each row corresponds to one equation in the system and entries follow the same format as the function combination.
+- \f$\textbf{Method}\f$: Specifies the numerical method to use (see the method list above).
+- \f$\textbf{Initial Time}\f$: The starting time for the simulation.
+- \f$\textbf{Final Time}\f$ The ending time for the simulation.
+- \f$\textbf{Step Size}\f$: The time step for the simulation.
+- \f$\textbf{Number of Steps}\f$ Number of steps of the method.
+- \f$\textbf{Initial Condition}\f$: Each row represents the values of \f$y_1, ..., y_n\f$ at a given time step. For example, if there are three initial conditions provided, the user will pass three rows, each containing the values for all variables in the system.
+- \f$\textbf{Number of Stages, A, B, C, Alpha and Beta}\f$: Parameters for specific methods (e.g. RK and AM). For the Runge-Kutta method, the matrix A is provided by rows and the vectors B and C are listed as single-line entries. The A matrix must be lower triangular for explicit methods.
 
 #### Note on Parsing:
-- Each input parameter begins with a **key** (e.g., `Number of equations:`, `Function combination:`).
+- Each input parameter begins with a **key** (e.g., `Number of equations:`, `Derivative combination:`).
 - The system will continue parsing subsequent lines as part of the current parameter until another key is encountered.
-- This format allows multi-line entries for parameters such as `Function combination`, `Derivative combination`, `Initial Condition`, and matrix `A`.
+- This format allows multi-line entries for parameters such as `Function/Derivative combination`, `Initial Condition`, and matrix `A`.
 - Input matrices and vectors can contain numerical values in either decimal floating-point format or fractional representation.
 
 ---
-
-<!-- ### Parsing Initial Conditions
-The initial condition matrix assumes that each row contains the values of \f$y_1, ..., y_n\f$ at a given time.
-
-#### Example Initial Conditions
-For the system:
-\f]
-\frac{dy_1}{dt} = t + y_2\\
-\frac{dy_2}{dt} = \sin(t) - y_1
-\f[
-
-Initial conditions might look like:
-```
-Initial Condition: 1 0
-1 -0.1
-1 -0.19
-```
-Each row represents the values of \f$y_1\f$ and \f$y_2\f$ at successive time steps.
-
---- -->
 
 ### Notes on Function Matrix
 The first entry of each row in the function matrix refers to the time variable (\f$t\f$). Ensure that \f$t\f$ is appropriately included as the first parameter in all equations.
@@ -283,11 +263,11 @@ We also provide an empty skeleton file, **`empty_input_file.txt`**, where you ca
 We follow the **Google C++ Style Guide** coding convenction for our project. You can find the full guidelines [here](https://google.github.io/styleguide/cppguide.html).
 
 ### Key Conventions Used:
-1. **Variable Naming:**
+1. **Variable naming:**
    - Variables are written in lowercase, with words separated by underscores.
    - Example: `variable_name`, `matrix_size`.
 
-2. **Class and Function Naming:**
+2. **Class and function naming:**
    - Classes and functions start with an uppercase letter, with subsequent words also capitalized (CamelCase).
    - Example: `ClassName`, `FunctionName`.
 
@@ -296,11 +276,11 @@ We follow the **Google C++ Style Guide** coding convenction for our project. You
 
 ## TODOs and future works
 
-1. **Extend RK Methods:** Add support for implicit Runge-Kutta methods.
-2. **Advanced Function Combinations:** Allow more advanced functions, complex combinations, function of functions and the multiplication between different variables. 
+1. **Extend RK methods:** Add support for implicit Runge-Kutta methods.
+2. **Advanced function combinations:** Allow more advanced functions, complex combinations, function of functions and the multiplication between different variables. 
 3. **Parsing fraction as multiplier and parameters for the input function:** Enable the interpretation of fractions as multipliers and as parameters for input functions.
-4. **Plotting for Scalar Equations:** Provide functions to visualize scalar solutions.
-5. **Stability Checks:** Implement stability checks for explicit methods to prevent non-converging approximations.
+4. **Plotting for scalar equations:** Provide functions to visualize scalar solutions.
+5. **Stability checks:** Implement stability checks for explicit methods to prevent non-converging approximations.
 
 
 
