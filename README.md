@@ -65,7 +65,7 @@ f_i(y_1, ..., y_n, t) = m_t \text{f}_t(t) + m_j \text{f}_j(y_1) +  \ldots + m_k\
 ### Available Basic Functions
 The following basic mathematical functions can be used to construct the system:
 
-1. **Sine Function:**
+1. **Sine Function@@:**
    \f[ \text{f1}(x, \text{param}) = \sin(\text{param} \cdot x) \f]
 
 2. **Cosine Function:**
@@ -131,7 +131,7 @@ This format ensures all keys are present, even if no values are provided. If a v
 
 #### Explanation of Entries:
 - **Number of equations:** Number of ODEs in the system.
-- **Function combination:** Defines the function matrix for \f$f_i(t, y_1, ..., y_n)\f$. Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable or the time variable (\f$t\f$) in that equation. Entries follow the format `multiplier_functionNumber_parameter` or `0` if the corresponding variable (\f$t\f$ or \f$y_i\f$) does not contribute to that row.
+- **Function combination:** Defines the function matrix for \f$f_i(t, y_1, ..., y_n)\f$. Each row corresponds to one equation in the system, each entry in a row defines the contribution of a specific variable or the time variable (\f$t\f$) in that equation. Entries follow the format `multiplier_functionNumber_parameter` or `0` if the corresponding variable (\f$t\f$ or \f$y_i\f$) does not contribute to that row. The value of functionNumber has to follow the list of available mathematical functions above.
 - **Derivative combination:** Defines the Jacobian matrix (if needed). Each row corresponds to one equation in the system and entries follow the same format as the function combination.
 - **Method:** Specifies the numerical method to use (see the method list above).
 - **Initial Time:** The starting time for the simulation.
